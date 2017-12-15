@@ -1,1 +1,14 @@
 theme: jekyll-theme-architect
+
+name: Application Concurentes et outils en Java
+
+author: Pascal Fares
+
+author_email: pascal.fares@cofares.net
+
+title:  Applications Concurentes
+
+google_analytics: UA-24954673-1
+
+plugins: 
+  - jekyll-sitemap
