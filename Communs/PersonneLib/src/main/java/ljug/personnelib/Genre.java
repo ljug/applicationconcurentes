@@ -1,6 +1,6 @@
-package ljug.exemple.lambda;
+package ljug.personnelib;
 
 /**
- * @author MikeW
+ * @author pfares
  */
-public enum Gender { MALE, FEMALE }
+public enum Genre { HOMME, FEMME, INCONNU }

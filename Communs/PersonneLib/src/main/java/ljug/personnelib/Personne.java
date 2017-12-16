@@ -1,91 +1,91 @@
-package ljug.exemple.lambda;
+package ljug.personnelib;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author MikeW
+ * @author Pfares
  */
-public class Person {
-  private String givenName;
-  private String surName;
+public class Personne {
+  private String nom;
+  private String prenom;
   private int age;
-  private Gender gender;
+  private Genre genre;
   private String eMail;
-  private String phone;
-  private String address;
+  private String telephone;
+  private String addresse;
   
   public static class Builder{
     
-    private String givenName="";
-    private String surName="";
+    private String nom="";
+    private String prenom="";
     private int age = 0;
-    private Gender gender = Gender.FEMALE;
+    private Genre genre = Genre.INCONNU;
     private String eMail = "";
-    private String phone = "";
-    private String address = "";
+    private String telephone = "";
+    private String addresse = "";
        
-    public Person.Builder givenName(String givenName){
-      this.givenName = givenName;
+    public Personne.Builder nom(String Nom){
+      this.nom = Nom;
       return this;
     }
     
-    public Person.Builder surName(String surName){
-      this.surName = surName;
+    public Personne.Builder prenom(String prenom){
+      this.prenom = prenom;
       return this;
     }
     
-    public Person.Builder age (int val){
+    public Personne.Builder age (int val){
       age = val;
       return this;
     }
     
-    public Person.Builder gender(Gender val){
-      gender = val;
+    public Personne.Builder genre(Genre val){
+      genre = val;
       return this;
     }
     
-    public Person.Builder email(String val){
+    public Personne.Builder email(String val){
       eMail = val;
       return this;
     }
     
-    public Person.Builder phoneNumber(String val){
-      phone = val;
+    public Personne.Builder numTel(String val){
+      telephone = val;
       return this;
     }
     
-    public Person.Builder address(String val){
-      address = val;
+    public Personne.Builder addresse(String val){
+      addresse = val;
       return this;
     }
     
-    public Person build(){
-      return new Person(this);
+    public Personne build(){
+      return new Personne(this);
     }
   }
     
-  private Person(){
+  private Personne(){
     super();
   }
     
-  private Person(Person.Builder builder){
-    givenName = builder.givenName;
-    surName = builder.surName;
+  private Personne(Personne.Builder builder){
+    nom = builder.nom;
+    prenom = builder.prenom;
     age = builder.age;
-    gender = builder.gender;
+    genre = builder.genre;
     eMail = builder.eMail;
-    phone = builder.phone;
-    address = builder.address;
+    telephone = builder.telephone;
+    addresse = builder.addresse;
         
   }
   
-  public String getGivenName(){
-    return givenName;
+  public String getNom(){
+    return nom;
   }
   
-  public String getSurName(){
-    return surName;
+  public String getPrenom(){
+    return prenom;
   }
   
   public int getAge(){
@@ -93,111 +93,102 @@ public class Person {
   }
             
   public void print(){
-    System.out.println(
-      "\nName: " + givenName + " " + surName + "\n" + 
+    System.out.println("\nName: " + nom + " " + prenom + "\n" + 
       "Age: " + age + "\n" +
-      "Gender: " + gender + "\n" + 
+      "Gender: " + genre + "\n" + 
       "eMail: " + eMail + "\n" + 
-      "Phone: " + phone + "\n" +
-      "Address: " + address + "\n"
+      "Phone: " + telephone + "\n" +
+      "Address: " + addresse + "\n"
                 );
   } 
   
-  public void printName(){    
-    System.out.println(
-      "Name: " + givenName + " " + surName);
+  public void printNomComplet(){    
+    System.out.println("Name: " + nom + " " + prenom);
   }
 
   @Override
   public String toString(){
-    return "Name: " + givenName + " " + surName + "\n" + "Age: " + age + "  Gender: " + gender + "\n" + "eMail: " + eMail + "\n" + "Address: " + address + "\n";
+    return "Name: " + nom + " " + prenom + "\n" + "Age: " + age + "  Gender: " + genre + "\n" + "eMail: " + eMail + "\n" + "Address: " + addresse + "\n";
   } 
   
 
-  public static List<Person> createShortList(){
-    List<Person> people = new ArrayList<>();
+  public static List<Personne> createShortList(){
+    List<Personne> people = new ArrayList<>();
     
-    people.add(
-      new Person.Builder()
-            .givenName("Bob")
-            .surName("Baker")
+    people.add(new Personne.Builder()
+            .nom("Pascal")
+            .prenom("Fares")
             .age(21)
-            .gender(Gender.MALE)
-            .email("bob.baker@example.com")
-            .phoneNumber("201-121-4678")
-            .address("44 4th St, Smallville, KS 12333")
+            .genre(Genre.HOMME)
+            .email("pascal.fares@cofares.net")
+            .numTel("201-121-4678")
+            .addresse("44 4th St, UneVille, KS 12333")
             .build() 
       );
     
-    people.add(
-      new Person.Builder()
-            .givenName("Jane")
-            .surName("Doe")
+    people.add(new Personne.Builder()
+            .nom("Léa")
+            .prenom("Fares")
             .age(25)
-            .gender(Gender.FEMALE)
-            .email("jane.doe@example.com")
-            .phoneNumber("202-123-4678")
-            .address("33 3rd St, Smallville, KS 12333")
+            .genre(Genre.FEMME)
+            .email("lea.fares@cofares.net")
+            .numTel("202-123-4678")
+            .addresse("33 3rd St, UneVille, KS 12333")
             .build() 
       );
     
-    people.add(
-      new Person.Builder()
-            .givenName("John")
-            .surName("Doe")
+    people.add(new Personne.Builder()
+            .nom("Emile")
+            .prenom("Ami")
             .age(25)
-            .gender(Gender.MALE)
-            .email("john.doe@example.com")
-            .phoneNumber("202-123-4678")
-            .address("33 3rd St, Smallville, KS 12333")
+            .genre(Genre.HOMME)
+            .email("emile.ami@cofares.net")
+            .numTel("202-123-4678")
+            .addresse("33 3rd St, UneVille, KS 12333")
             .build()
     );
     
-    people.add(
-      new Person.Builder()
-            .givenName("James")
-            .surName("Johnson")
+    people.add(new Personne.Builder()
+            .nom("James")
+            .prenom("Johnson")
             .age(45)
-            .gender(Gender.MALE)
-            .email("james.johnson@example.com")
-            .phoneNumber("333-456-1233")
-            .address("201 2nd St, New York, NY 12111")
+            .genre(Genre.HOMME)
+            .email("james.johnson@cofares.net")
+            .numTel("333-456-1233")
+            .addresse("201 2nd St, New York, NY 12111")
             .build()
     );
     
-    people.add(
-      new Person.Builder()
-            .givenName("Joe")
-            .surName("Bailey")
+    people.add(new Personne.Builder()
+            .nom("Joe")
+            .prenom("Bailey")
             .age(67)
-            .gender(Gender.MALE)
-            .email("joebob.bailey@example.com")
-            .phoneNumber("112-111-1111")
-            .address("111 1st St, Town, CA 11111")
+            .genre(Genre.HOMME)
+            .email("joepascal.bailey@cofares.net")
+            .numTel("112-111-1111")
+            .addresse("111 1st St, Ville, CA 11111")
             .build()
     );
     
-    people.add(
-      new Person.Builder()
-            .givenName("Phil")
-            .surName("Smith")
+    people.add(new Personne.Builder()
+            .nom("Phil")
+            .prenom("Smith")
             .age(55)
-            .gender(Gender.MALE)
+            .genre(Genre.HOMME)
             .email("phil.smith@examp;e.com")
-            .phoneNumber("222-33-1234")
-            .address("22 2nd St, New Park, CO 222333")
+            .numTel("222-33-1234")
+            .addresse("22 2nd St, Village, CO 222333")
             .build()
     );
     
-    people.add(
-      new Person.Builder()
-            .givenName("Betty")
-            .surName("Jones")
+    people.add(new Personne.Builder()
+            .nom("Betty")
+            .prenom("Jones")
             .age(85)
-            .gender(Gender.FEMALE)
-            .email("betty.jones@example.com")
-            .phoneNumber("211-33-1234")
-            .address("22 4th St, New Park, CO 222333")
+            .genre(Genre.FEMME)
+            .email("betty.jones@cofares.net")
+            .numTel("211-33-1234")
+            .addresse("22 4th St, Village, CO 222333")
             .build()
     );
     
