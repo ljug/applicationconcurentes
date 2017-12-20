@@ -1,4 +1,6 @@
-# Applications concurrentes et outils Java.
+# Concurrence, Parallelisme et E/S non bloquante 
+
+Applications concurrentes et outils Java.
 
 La _**programmation concurrente**_ est un paradigme de programmation tenant compte, dans un programme, de l'existence de plusieurs piles sémantiques qui peuvent être appelées **threads**, **processus** ou _tâches_. Elles sont matérialisées en machine par une pile d'exécution et un ensemble de données privées.
 
@@ -26,7 +28,7 @@ Dan ce dépot vous trouverez donc des exemples concernant cette partie du Cours
 
 >>> Les paradigmes de la concurrence et les archétypes de programmation ('design patterns').
 >>>>Exclusion mutuelle, élection, producteur consommateur, lecteurs rédacteurs, client-serveur, "peer to peer", problèmes liés aux pannes, diffusion atomique ordonnée, inter-blocage, famine, équité, terminaison.
-Mécanismes de bases (processus, sémaphores, moniteurs, la classe "thread" et les méthodes "synchronized" dans Java, tâches et objets protégés dans ADA95, communication synchrone et asynchrone, messages, boîtes aux lettres, invocation à distance, rendez-vous). Modularité et objets concurrents.
+Mécanismes de bases (processus, sémaphores, moniteurs, la classe "thread" et les méthodes "synchronized" dans Java, Executor, Lambda, communication synchrone et asynchrone, messages, boîtes aux lettres, invocation à distance, rendez-vous). Modularité et objets concurrents.
 
 # Autres références
 
