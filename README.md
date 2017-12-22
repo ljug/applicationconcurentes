@@ -1,8 +1,8 @@
-# Concurrence, Parallelisme et E/S non bloquante 
+# Concurrence, Parallélisme et E/S non bloquante 
 
 Applications concurrentes et outils Java.
 
-La _**programmation concurrente**_ est un paradigme de programmation tenant compte, dans un programme, de l'existence de plusieurs piles sémantiques qui peuvent être appelées **threads**, **processus** ou _tâches_. Elles sont matérialisées en machine par une pile d'exécution et un ensemble de données privées.
+La _**programmation concurrente**_ est un [paradigme de programmation](Paradigme/) tenant compte, dans un programme, de l'existence de plusieurs piles sémantiques qui peuvent être appelées **threads**, **processus** ou _tâches_. Elles sont matérialisées en machine par une pile d'exécution et un ensemble de données privées.
 
 La concurrence est indispensable lorsque l'on souhaite écrire des programmes interagissant avec le monde réel (qui est concurrent) ou tirant parti de multiples unités centrales (couplées, comme dans un système multiprocesseurs, ou distribuées, éventuellement en grille ou en grappe). Afin de tirer proffit des [architectures parallélisme](https://fr.wikipedia.org/wiki/Parall%C3%A9lisme_(informatique))
 
@@ -11,7 +11,9 @@ Dans ce dépot nous traiterons essentiellement de problèmes de concurrences (pa
 
 Dans ce github vous trouverez un ensemble d'exemples pour mettre l'accent sur les problèmes lieés à la concurrence et leurs solutions d'une manière générale, avec les outils Java en particulier.
 
-## Les Thread, Executors et autre outils de lancement de tâches concurentes
+## Les Thread, Executors et autre outils de lancement de tâches concurrentes
+
+La concurrence en java
 ## La librairie java.util.concurent pour les outils de synchronisation.
 
 # En complément du Cours ACCOV à l'[ISSAE Cnam Liban](http://depinfo.isae.edu.lb)
