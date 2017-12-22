@@ -35,3 +35,5 @@ Mécanismes de bases (processus, sémaphores, moniteurs, la classe "thread" et l
 # Autres références
 
 * [Introduction aux problèmes liés à la concurence](http://lps.cofares.net/ConcurenceEtSynchro/)
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTFYyhZvdBAbS1Iq6a2BdfJElrI9FLycNDkAeCppEPvHTtgZoTE2kwPVhbx-jcodvfoMSnAx1VtgDz8/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
