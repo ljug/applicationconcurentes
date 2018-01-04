@@ -2,10 +2,10 @@
 
 La _**programmation concurrente**_ est un paradigme de programmation tenant compte, dans un programme, de l'existence de plusieurs piles sémantiques qui peuvent être appelées **threads**, **processus** ou _tâches_. Elles sont matérialisées en machine par une pile d'exécution et un ensemble de données privées.
 
-La concurrence est indispensable lorsque l'on souhaite écrire des programmes interagissant avec le monde réel (qui est concurrent) ou tirant parti de multiples unités centrales (couplées, comme dans un système multiprocesseurs, ou distribuées, éventuellement en grille ou en grappe). Afin de tirer proffit des [architectures parallélisme](https://fr.wikipedia.org/wiki/Parall%C3%A9lisme_(informatique))
+La concurrence est indispensable lorsque l'on souhaite écrire des programmes interagissant avec le monde réel (qui est concurrent) ou tirant parti de multiples unités centrales (couplées, comme dans un système multiprocesseurs, ou distribuées, éventuellement en grille ou en grappe). Afin de tirer profit des [architectures parallélisme](https://fr.wikipedia.org/wiki/Parall%C3%A9lisme_(informatique))
 
 ---
-Dans ce dépot nous traiterons essentiellement de problèmes de concurrences (parallelisme d'exécution avec besoin d'utilser des resources partagées) et leurs outils. On abordera les **'Lambda'** (pour les versions de Java à partir de Java 8) permettant certraines écriture plus adapté ou plus élégantes.
+Dans ce dépôt nous traiterons essentiellement de problèmes de concurrences (parallélisme d'exécution avec besoin d'utilser des resources partagées) et leurs outils. On abordera les **'Lambda'** (pour les versions de Java à partir de Java 8) permettant certraines écriture plus adapté ou plus élégantes.
 
 Dans ce github vous trouverez un ensemble d'exemples pour mettre l'accent sur les problèmes lieés à la concurrence et leurs solutions d'une manière générale, avec les outils Java en particulier.
 
@@ -22,7 +22,7 @@ Ce cours a pour objectif :
 - de comprendre les problèmes fondamentaux des systèmes concurrents
 - et de s'initier à des méthodes et techniques de vérification automatique de ces  systèmes (model-checking, logiques temporelles) 
 
-Dan ce dépot vous trouverez donc des exemples concernant cette partie du Cours
+Dan ce dépôt vous trouverez donc des exemples concernant cette partie du Cours
 
 >>> Les paradigmes de la concurrence et les archétypes de programmation ('design patterns').
 >>>>Exclusion mutuelle, élection, producteur consommateur, lecteurs rédacteurs, client-serveur, "peer to peer", problèmes liés aux pannes, diffusion atomique ordonnée, inter-blocage, famine, équité, terminaison.
@@ -30,4 +30,4 @@ Mécanismes de bases (processus, sémaphores, moniteurs, la classe "thread" et l
 
 # Autres références
 
-* [Introduction aux problèmes liés à la concurence](http://lps.cofares.net/ConcurenceEtSynchro/)
+* [Introduction aux problèmes liés à la concurrence](http://lps.cofares.net/ConcurenceEtSynchro/)
