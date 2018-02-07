@@ -10,69 +10,37 @@
  */
 package processexec;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Notre premier example de création de processus fils suivi d'un recouvrement
+ * Notre premier exemple de création de processus fils suivi d'un recouvrement
  * Equivalent en C de : fork() -> exec()
  * @author pascalfares
  */
-public class ProcessExec2 {
+public class ProcessExec11 {
 
     /**
      * Un chemin pour vos execution et réféence de fichier, adaptez le a votre
      * Environement
      */
-    public static final String CHEMIN = "/home/pascalfares/tp001";
-    
-    /**
-     * Récuperer le standard output du processus fils
-     * @param p
-     * @return 
-     */
-    private static BufferedReader getOutput(Process p) {
-        return new BufferedReader(new InputStreamReader(p.getInputStream()));
-    }
-
-    /**
-     * Récuperer le standard error du processus fils
-     * @param p
-     * @return 
-     */
-    private static BufferedReader getError(Process p) {
-        return new BufferedReader(new InputStreamReader(p.getErrorStream()));
-    }
+    public static final String CHEMIN = "/home/pascalfares";
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Début du programme 2");
+        System.out.println("Début du programme 1");
         try {
-            String[] commande = {"ls", "-l", "-a", CHEMIN};
+            String[] commande = {CHEMIN+"/bin/hello.sh", "Bonjour"};
             Process p = Runtime.getRuntime().exec(commande);
-            BufferedReader output = getOutput(p);
-            BufferedReader error = getError(p);
-            String ligne = "";
-
-            while ((ligne = output.readLine()) != null) {
-                System.out.println(ligne);
-            }
-            
-            while ((ligne = error.readLine()) != null) {
-                System.out.println(ligne);
-            }
-
             p.waitFor();
         } catch (IOException e) {
-            e.printStackTrace();
+             Logger.getLogger(ProcessExec11.class.getName()).log(Level.SEVERE, null, e);
         } catch (InterruptedException ex) {
-            Logger.getLogger(ProcessExec2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProcessExec11.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Fin du programme 2");
+        System.out.println("Fin du programme 1");
     }
     
 }
