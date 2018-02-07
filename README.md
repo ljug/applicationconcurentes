@@ -13,7 +13,8 @@ Dans ce github vous trouverez un ensemble d'exemples pour mettre l'accent sur le
 
 ## Les Thread, Executors et autre outils de lancement de tâches concurrentes
 
-La concurrence en java
+* [La concurrence en java](/ConcurenceJava)
+
 ## La librairie java.util.concurent pour les outils de synchronisation.
 
 # En complément du Cours ACCOV à l'[ISSAE Cnam Liban](http://depinfo.isae.edu.lb)

@@ -1,4 +1,11 @@
 # Concurrence et parallélisme avec java
+
+[Play Liste ACCOV](https://www.youtube.com/playlist?list=PLO7WoVkPcCgFfuqVq_dcS5YC_xAdnilqj)
+
+0. [Définitions, rappels, positionnement et problématique](000/)
+1. [Thread et processus Java](001/)
+
+# Références
 http://blog.paumard.org/cours/java-api/
 ## Gestion des Thread
 
