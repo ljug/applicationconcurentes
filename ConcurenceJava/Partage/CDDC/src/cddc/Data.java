@@ -9,10 +9,8 @@ package cddc;
  *
  * @author Pascal Fares
  */
-public class Data {
-    
+public class Data {   
     private int donnee;
-
     public Data() {
         donnee=0;
     }
@@ -27,7 +25,6 @@ public class Data {
     public int getDonee() {
         return donnee;
     }
-
     /**
      * Set the value of donee
      *
@@ -35,7 +32,5 @@ public class Data {
      */
     public void setDonee(int donee) {
         this.donnee = donee;
-    }
-
-    
+    }   
 }

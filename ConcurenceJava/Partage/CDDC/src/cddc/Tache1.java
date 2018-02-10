@@ -19,13 +19,13 @@ public class Tache1 implements Runnable {
 
     @Override
     public void run() {
-        System.out.println();
+        System.out.println("debut t1");
         for (int i=0;i<100000;i++) {
             reftoData.inc();
-            System.out.printf(" ...T1 Priv : %d Glob: %d... ", 
-                    i, reftoData.getDonee());
+            //System.out.printf(" ...T1 Priv : %d Glob: %d... ", 
+                    //i, reftoData.getDonee());
         }
-        System.out.println();
+        System.out.println("fin t1");
     }
 
 }

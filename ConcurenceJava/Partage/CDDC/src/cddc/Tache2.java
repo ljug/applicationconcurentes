@@ -20,14 +20,14 @@ public class Tache2 implements Runnable {
 
     @Override
     public void run() {
-        System.out.println();
+        System.out.println("debut t2");
         while (DonneePrivee < 100000) {
             referenceDonnees.inc();
             DonneePrivee++;
-            System.out.printf(" <T2 Priv : %d Glob: %d> ", 
-                    DonneePrivee, referenceDonnees.getDonee());
+            //System.out.printf(" <T2 Priv : %d Glob: %d> ", 
+                    //DonneePrivee, referenceDonnees.getDonee());
         }
-        System.out.println();
+        System.out.println("fin t2");
     }
 
 }
