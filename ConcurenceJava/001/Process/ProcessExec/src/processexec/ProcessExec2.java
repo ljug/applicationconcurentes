@@ -24,7 +24,6 @@ import java.util.logging.Logger;
  * @author pascalfares
  */
 public class ProcessExec2 {
-
     /**
      * Un chemin pour vos execution et réféence de fichier, adaptez le a votre
      * Environement
@@ -64,7 +63,7 @@ public class ProcessExec2 {
             BufferedReader error = getError(p);
             PrintWriter input  = getInput(p);
             
-            String ligne = "";
+            String ligne;
 
             input.printf("Un texte\n");
             input.flush();
@@ -78,9 +77,8 @@ public class ProcessExec2 {
             }
             
             p.waitFor();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException ex) {
+        
+        } catch (IOException|InterruptedException ex) {
             Logger.getLogger(ProcessExec2.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("Fin du programme 2");
