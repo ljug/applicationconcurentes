@@ -32,3 +32,5 @@ buildNumber.properties
 /ConcurenceJava/ClientServeurMultiT/ServerTCP/build/
 /ConcurenceJava/ClientServeurMultiT/ClientTCP/nbproject/private/
 /ConcurenceJava/ClientServeurMultiT/ClientTCP/build/
+/ConcurenceJava/Partage/CDDCAvecSynchro/nbproject/private/
+/ConcurenceJava/Partage/CDDCAvecSynchro/build/

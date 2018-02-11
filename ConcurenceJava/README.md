@@ -3,10 +3,17 @@
 [Play Liste ACCOV](https://www.youtube.com/playlist?list=PLO7WoVkPcCgFfuqVq_dcS5YC_xAdnilqj)
 
 0. [Définitions, rappels, positionnement et problématique](000/)
-1. [Thread et processus Java](001/)
+1. [Notion processus Java](001/)
+2. [Thread Java : premier exemple][IntroThread/]
+3. [Thread java : Ordonnancement Démon][Ordonnancement/]
+4. [Thread Java : Partage code et données][Partage/]
+5. [Application Thread : Client Serveur TCP multi Thread][ClientServeurMultiT/]
 
-# Références
+# Références d'inspiration
+
+http://www.jmdoudoux.fr/accueil_java.htm
 http://blog.paumard.org/cours/java-api/
+
 ## Gestion des Thread
 
 http://lmauzaize.developpez.com/tutoriels/java/concurrence/gestion-threads/

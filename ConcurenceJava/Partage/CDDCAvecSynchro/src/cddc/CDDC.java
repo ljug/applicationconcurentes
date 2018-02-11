@@ -26,6 +26,7 @@ public class CDDC {
             
             Thread t1=new Thread(tache1);
             Thread t2=new Thread(tache2);
+            
             t1.start();
             t2.start();
             t1.join();
