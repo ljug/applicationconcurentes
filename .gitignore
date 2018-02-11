@@ -7,6 +7,9 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+private/
+build/
+dist/
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
@@ -36,3 +39,5 @@ buildNumber.properties
 /ConcurenceJava/Partage/CDDCAvecSynchro/build/
 /ConcurenceJava/Partage/CDDCAvecSynchroClass/nbproject/private/
 /ConcurenceJava/Partage/CDDCAvecSynchroClass/build/
+/ConcurenceJava/ClientServeurMultiT/plusieursClients_2/ServerTCPMultiClient/dist/
+/ConcurenceJava/ClientServeurMultiT/plusieursClients_2/ClientTCPMultiClient/dist/
