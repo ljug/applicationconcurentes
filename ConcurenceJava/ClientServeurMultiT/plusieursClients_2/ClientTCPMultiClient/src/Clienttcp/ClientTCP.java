@@ -40,7 +40,7 @@ public class ClientTCP {
         Socket l = null;
         try {
             l = new Socket("localhost", 2000);
-            System.out.println(l.getLocalSocketAddress());
+            System.out.println("Mon adresse est : "+l.getLocalSocketAddress());
             //Input stream de la socket (depuis le serveur)
             BufferedReader ir = getInput(l);
             //Input stream du stdin
