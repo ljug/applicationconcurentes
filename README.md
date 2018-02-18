@@ -7,9 +7,9 @@ La _**programmation concurrente**_ est un [paradigme de programmation](Paradigme
 La concurrence est indispensable lorsque l'on souhaite écrire des programmes interagissant avec le monde réel (qui est concurrent) ou tirant parti de multiples unités centrales (couplées, comme dans un système multiprocesseurs, ou distribuées, éventuellement en grille ou en grappe). Afin de tirer profit des [architectures parallélisme](https://fr.wikipedia.org/wiki/Parall%C3%A9lisme_(informatique))
 
 ---
-Dans ce dépôt nous traiterons essentiellement de problèmes de concurrences (parallélisme d'exécution avec besoin d'utilser des resources partagées) et leurs outils. On abordera les **'Lambda'** (pour les versions de Java à partir de Java 8) permettant certraines écriture plus adapté ou plus élégantes.
+Dans ce dépôt nous traitons essentiellement de problèmes de concurrences (parallélisme d'exécution avec besoin d'utilser des resources partagées) et leurs outils. On abordera les **'Lambda'** (pour les versions de Java à partir de Java 8) permettant certraines écriture plus adapté ou plus élégantes.
 
-Dans ce github vous trouverez un ensemble d'exemples pour mettre l'accent sur les problèmes lieés à la concurrence et leurs solutions d'une manière générale, avec les outils Java en particulier.
+Dans ce github vous trouverez un ensemble d'exemples pour mettre l'accent sur les problèmes lieés à la concurrence et leurs solutions d'une manière générale, au sein de la plateforme Java en particulier.
 
 ## Les Thread, Executors et autre outils de lancement de tâches concurrentes
 
