@@ -33,6 +33,13 @@ Dan ce dépôt vous trouverez donc des exemples concernant cette partie du Cours
 >>>>Exclusion mutuelle, élection, producteur consommateur, lecteurs rédacteurs, client-serveur, "peer to peer", problèmes liés aux pannes, diffusion atomique ordonnée, inter-blocage, famine, équité, terminaison.
 Mécanismes de bases (processus, sémaphores, moniteurs, la classe "thread" et les méthodes "synchronized" dans Java, Executor, Lambda, communication synchrone et asynchrone, messages, boîtes aux lettres, invocation à distance, rendez-vous). Modularité et objets concurrents.
 
+# Traveaux pratique et compléments
+
+## Autour du client/serveur TCP/IP
+
+* [Introduction Socket](Complements/Sockets/)
+* [Client/Serveur multi thread](ConcurenceJava/ClientServeurMultiT/)
+
 # Autres références
 
 * [Introduction aux problèmes liés à la concurence](http://lps.cofares.net/ConcurenceEtSynchro/)

@@ -3,6 +3,38 @@
 
 @import 'jekyll-theme-architect';
 
+@font-face {
+  font-family: MapleRegular;
+  src: url(../fonts/Maple-Regular.otf);
+}
+a,
+.a {
+  color: #c1002a;
+  text-decoration: none;
+}
+a:visited,
+.a:visited {
+  color: #8e001f;
+}
+a:hover, a:active, a:focus,
+.a:hover,
+.a:active,
+.a:focus {
+  text-decoration: underline;
+}
+a img,
+.a img {
+  border: none;
+  vertical-align: middle;
+}
+header {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-family: MapleRegular, 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+  background: #cfc8c0 url(../images/header-bg.jpg) 0 0 repeat-x;
+  border-bottom: solid 1px #857761;
+}
+
 header h1 {
   width: 740px;
   margin-top: 0;
@@ -32,6 +64,18 @@ header h2 {
   content: "/";
 }
 
+#main-content h2:before {
+  padding-right: 0.3em;
+  margin-left: -1.5em;
+  content: "//";
+  color: #aa9f97;
+}
+#main-content h3:before {
+  padding-right: 0.3em;
+  margin-left: -2em;
+  content: "///";
+  color: #aa9f97;
+}
 .inner {
   position: relative;
   width: 1140px;
