@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  /*---------------------------------------------------------------------------------*/
 class UneLigne extends JComponent {
 
-    final static BasicStroke stroke = new BasicStroke(5.0f);
+    final static BasicStroke stroke = new BasicStroke(10.0f);
     Color couleur;
     int x1, y1, x2, y2;
 
@@ -215,7 +215,7 @@ public class Fenetre extends JFrame {
      */
     private void tracerLignePointAPoint(int x1, int y1, int x2, int y2, String couleur) {
         /* intervalle entre le trace de 2 points. Pour une meilleure visualisation du parallelisme */
-        final int DELAI = 15;
+        final int DELAI = 5;
         Component pc;
         int x, y, Xincr, Yincr;
 
@@ -336,28 +336,23 @@ public class Fenetre extends JFrame {
                 couleur = "black";
             }
 
-            synchronized (cp) {
-                pc = add(new UnPoint(x, y, couleur));
-                setVisible(true);
-            }
-            attendre(DELAI);
             while (true) {
-                synchronized (cp) {
-                    remove(pc);
-                }
-                if (x + dx < 0 || x + dx > largeur) {
-                    dx = -dx;
-                }
-                x += dx;
-                if (y + dy < 0 || y + dy > largeur) {
-                    dy = -dy;
-                }
-                y += dy;
                 synchronized (cp) {
                     pc = add(new UnPoint(x, y, couleur));
                     setVisible(true);
                 }
                 attendre(DELAI);
+                synchronized (cp) {
+                    remove(pc);
+                }
+                if (x + dx <= 0 || x + dx >= largeur) {
+                    dx = -dx;
+                }
+                x += dx;
+                if ((y + dy) <= 0 || (y + dy) >= hauteur) {
+                    dy = -dy;
+                }
+                y += dy;
             }
 
         } catch (IndexOutOfBoundsException e) {
