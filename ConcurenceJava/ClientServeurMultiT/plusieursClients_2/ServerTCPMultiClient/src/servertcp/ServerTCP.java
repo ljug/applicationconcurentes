@@ -27,7 +27,7 @@ public class ServerTCP {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        ServerSocket l = new ServerSocket(2000);
+        ServerSocket l = new ServerSocket(2003);
         System.out.println(l.getLocalSocketAddress());
         while (true) {
             Socket serviceSocket = l.accept();
