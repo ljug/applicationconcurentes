@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servertcp;
 
 import java.io.BufferedReader;
@@ -14,7 +9,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- *
  * @author Pascal Fares
  */
 public class ServerTCP {
@@ -29,26 +23,27 @@ public class ServerTCP {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        ServerSocket l = new ServerSocket(2000);
-        System.out.println(l.getLocalSocketAddress());
+        ServerSocket ecoute;
+        ecoute = new ServerSocket(2000);
+        System.out.printf("L'adresse de la socket d'écoute est %s\n",
+                ecoute.getLocalSocketAddress());
         while (true) {
-            //try-with-resource
-            try (Socket serviceSocket = l.accept()) {
-                System.out.println(serviceSocket.getRemoteSocketAddress());
-                BufferedReader ir = getInput(serviceSocket);
-                PrintWriter reply = getoutput(serviceSocket);
-                String line;
-                System.out.println("Avant boucle");
-                while ((line = ir.readLine()) != null) {
-                    System.out.println("Dans boucle");
-                    System.out.printf("je répond ping %s\n", line);
-                    reply.printf("je répond ping %s\n", line);
-                    reply.flush();
-                }
-            }
+            Socket serviceSocket = ecoute.accept();
+            System.out.printf("L'adresse de la socket cliente (remote) est %s\n",
+                    serviceSocket.getRemoteSocketAddress());
+            BufferedReader ir = getInput(serviceSocket);
+            PrintWriter reply = getoutput(serviceSocket);
+            String line;
+            line = ir.readLine();
+            System.out.printf("Reçu %s du Client\n", line);
+            reply.printf("Reponse Serveur %s\n", line);
+            reply.flush();
+            serviceSocket.close();
         }
+
     }
 
 }
