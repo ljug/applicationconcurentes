@@ -39,7 +39,7 @@ public class ClientTCP {
     public static void main(String[] args) throws IOException {
         Socket l = null;
         try {
-            l = new Socket("localhost", 2000);
+            l = new Socket("localhost", 2002);
             System.out.println(l.getLocalSocketAddress());
             //Input stream de la socket (depuis le serveur)
             BufferedReader ir = getInput(l);

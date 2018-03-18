@@ -9,6 +9,10 @@
 4. [Thread Java : Partage code et données][Partage/]
 5. [Application Thread : Client Serveur TCP multi Thread][ClientServeurMultiT/]
 
+# Les TP
+
+0. [Vers un chating TCP Java et Thread](ClientServeurMultiT/TPVersChating/)
+
 # Références d'inspiration
 
 http://www.jmdoudoux.fr/accueil_java.htm

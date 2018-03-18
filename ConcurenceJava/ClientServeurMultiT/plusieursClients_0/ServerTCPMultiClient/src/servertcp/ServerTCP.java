@@ -32,7 +32,7 @@ public class ServerTCP {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        ServerSocket l = new ServerSocket(2000);
+        ServerSocket l = new ServerSocket(2001);
         System.out.println(l.getLocalSocketAddress());
         while (true) {
             try (Socket serviceSocket = l.accept()) {

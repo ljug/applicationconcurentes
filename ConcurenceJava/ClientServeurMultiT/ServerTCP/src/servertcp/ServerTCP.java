@@ -31,17 +31,17 @@ public class ServerTCP {
         System.out.printf("L'adresse de la socket d'écoute est %s\n",
                 ecoute.getLocalSocketAddress());
         while (true) {
-            Socket serviceSocket = ecoute.accept();
-            System.out.printf("L'adresse de la socket cliente (remote) est %s\n",
-                    serviceSocket.getRemoteSocketAddress());
-            BufferedReader ir = getInput(serviceSocket);
-            PrintWriter reply = getoutput(serviceSocket);
-            String line;
-            line = ir.readLine();
-            System.out.printf("Reçu %s du Client\n", line);
-            reply.printf("Reponse Serveur %s\n", line);
-            reply.flush();
-            serviceSocket.close();
+            //try-with-resource
+            try (Socket serviceSocket = l.accept()) {
+                System.out.println(serviceSocket.getRemoteSocketAddress());
+                BufferedReader ir = getInput(serviceSocket);
+                PrintWriter reply = getoutput(serviceSocket);
+                String line = ir.readLine();
+                System.out.printf("je répond ping %s\n", line);
+                reply.printf("je répond ping %s\n", line);
+                reply.flush();
+
+            }
         }
 
     }
