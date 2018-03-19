@@ -53,6 +53,8 @@ public class ClientTCP {
                 System.out.println(ir.readLine());
             }
             envoyer.printf(".\n");
+            //Pour récupérer le Bye
+            System.out.println(ir.readLine());
         } finally {
             if (l != null) {
                 l.close();

@@ -40,9 +40,7 @@ public class ServerTCP {
                 BufferedReader ir = getInput(serviceSocket);
                 PrintWriter reply = getoutput(serviceSocket);
                 String line;
-                System.out.println("Avant boucle");
                 while (!(line = ir.readLine()).equals(".")) {
-                    System.out.println("Dans boucle");
                     System.out.printf("je répond ping %s\n", line);
                     reply.printf("je répond ping %s\n", line);
                     reply.flush();

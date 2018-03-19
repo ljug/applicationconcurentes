@@ -39,7 +39,7 @@ public class ClientTCP {
             BufferedReader ir = getInput(l);
             PrintWriter envoyer = getoutput(l);
             for (int i = 0; i < 1000; i++) {
-                envoyer.printf("#%2d : Bonjour\n", i);
+                envoyer.printf("#%3d : Bonjour\n", i);
                 Thread.sleep(10);
                 System.out.println(ir.readLine());
             }
