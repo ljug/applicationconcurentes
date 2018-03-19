@@ -29,17 +29,17 @@ public class ClientTCP {
     }
 
     private static PrintWriter getoutput(Socket p) throws IOException {
-        //Avec autoflush
+        
         return new PrintWriter(new OutputStreamWriter(p.getOutputStream()), true);
     }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Socket l = null;
         try {
-            l = new Socket("localhost", 2000);
+            l = new Socket("localhost", 2010);
             System.out.println(l.getLocalSocketAddress());
             //Input stream de la socket (depuis le serveur)
             BufferedReader ir = getInput(l);
@@ -47,12 +47,15 @@ public class ClientTCP {
             BufferedReader stdin = getInput(System.in);
             //Output de la socket vers le serveur
             PrintWriter envoyer = getoutput(l);
-            String line;
-            while (!(line = stdin.readLine()).equals(".")) {
-                envoyer.printf("%s\n", line);
-                System.out.println(ir.readLine());
-            }
-            envoyer.printf(".\n");
+            
+            Thread lireStdOutSock = 
+                    new Thread (new ServiceInOut(stdin, envoyer, "Std->sock"));
+            Thread lireSockStdOut= 
+                    new Thread (new ServiceInOut(ir, new PrintWriter(System.out), "Sock->Std"));
+            lireStdOutSock.start();
+            lireSockStdOut.start();
+            lireStdOutSock.join();
+            lireSockStdOut.join();
         } finally {
             if (l != null) {
                 l.close();

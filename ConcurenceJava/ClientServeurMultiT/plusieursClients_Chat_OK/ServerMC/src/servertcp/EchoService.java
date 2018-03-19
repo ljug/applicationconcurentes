@@ -36,12 +36,13 @@ public class EchoService implements Runnable {
             //ir = ServerTCP.getInput(serviceSocket);
             //PrintWriter reply = ServerTCP.getoutput(serviceSocket);
             String line;
-            //System.out.println("Avant boucle");
+            System.out.println("Avant boucle");
             while (!(line = ic.getReader().readLine()).equals(".")) {
-                //System.out.println("Dans boucle");
+                System.out.println("Dans boucle");
                 System.out.printf("J'ai recus %s\n", line);
                 listeClients.sendMessageToAll(line);
             }
+            ic.getWriter().printf(".\n");
         } catch (IOException ex) {
             Logger.getLogger(EchoService.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
