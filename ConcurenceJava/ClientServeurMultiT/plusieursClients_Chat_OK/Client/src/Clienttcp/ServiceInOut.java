@@ -22,26 +22,32 @@ import java.util.logging.Logger;
  */
 public class ServiceInOut implements Runnable {
 
-    String _sens;
-    PrintWriter _out;
-    BufferedReader _in;
+    private final String _arret;
+    private final PrintWriter _out;
+    private final BufferedReader _in;
 
-    public ServiceInOut(BufferedReader in, PrintWriter out,String sens) {
+    public ServiceInOut(BufferedReader in, PrintWriter out,String arret) {
         _in = in;
         _out = out;
-        _sens=sens;
+        _arret=arret;
     }
 
+
+    /**
+     * Lire indiniment l'entrée et la restrasmettre à la sortie (tel quel)
+     * Terminer lorque une ligen corrspondant à la commande d'arret est recu
+     */
     @Override
     public void run() {
         try {
             String line;
             //System.out.println(_sens);
-            while (!(line = _in.readLine()).equals(".")) {
-                //System.out.println("Dans boucle "+ _sens + line);
+            while ((line = _in.readLine()) != null) {               
                 _out.printf("%s\n", line);_out.flush();
+                if (line.startsWith(_arret)) {
+                    break;
+                }
             }
-            _out.printf(".\n");
         } catch (IOException ex) {
             Logger.getLogger(ServiceInOut.class.getName()).log(Level.SEVERE, null, ex);
         }

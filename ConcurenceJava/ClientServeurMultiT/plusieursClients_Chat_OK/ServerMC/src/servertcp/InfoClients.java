@@ -30,12 +30,12 @@ public class InfoClients {
     /**
      * La reader de la socket dún client
      */
-    private BufferedReader reader;
+    private final BufferedReader reader;
 
     /**
      * La writer de la socket d'un client
      */
-    private PrintWriter writer;
+    private final PrintWriter writer;
     
     public InfoClients(Socket s) throws IOException {
         serviceClientSocket=s;
@@ -43,11 +43,11 @@ public class InfoClients {
         writer = getoutput(s);
     }
 
-    BufferedReader getInput(Socket p) throws IOException {
+    final BufferedReader getInput(Socket p) throws IOException {
         return new BufferedReader(new InputStreamReader(p.getInputStream()));
     }
 
-    PrintWriter getoutput(Socket p) throws IOException {
+    final PrintWriter getoutput(Socket p) throws IOException {
         return new PrintWriter(new OutputStreamWriter(p.getOutputStream()),true);
     }
     /**
@@ -72,24 +72,10 @@ public class InfoClients {
     }
 
     /**
-     * @param reader the reader to set
-     */
-    public void setReader(BufferedReader reader) {
-        this.reader = reader;
-    }
-
-    /**
      * @return the writer
      */
     public PrintWriter getWriter() {
         return writer;
-    }
-
-    /**
-     * @param writer the writer to set
-     */
-    public void setWriter(PrintWriter writer) {
-        this.writer = writer;
     }
 
 }

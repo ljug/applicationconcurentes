@@ -5,11 +5,8 @@
  */
 package servertcp;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,13 +30,9 @@ public class EchoService implements Runnable {
         
         try {
             System.out.println(ic.getServiceClientSocket().getRemoteSocketAddress());
-            //ir = ServerTCP.getInput(serviceSocket);
-            //PrintWriter reply = ServerTCP.getoutput(serviceSocket);
             String line;
-            System.out.println("Avant boucle");
             while (!(line = ic.getReader().readLine()).equals(".")) {
-                System.out.println("Dans boucle");
-                System.out.printf("J'ai recus %s\n", line);
+                System.out.printf("[TRACE] recus %s\n", line);
                 listeClients.sendMessageToAll(line);
             }
             ic.getWriter().printf(".\n");

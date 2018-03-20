@@ -49,9 +49,9 @@ public class ClientTCP {
             PrintWriter envoyer = getoutput(l);
             
             Thread lireStdOutSock = 
-                    new Thread (new ServiceInOut(stdin, envoyer, "Std->sock"));
+                    new Thread (new ServiceInOut(stdin, envoyer, "."));
             Thread lireSockStdOut= 
-                    new Thread (new ServiceInOut(ir, new PrintWriter(System.out), "Sock->Std"));
+                    new Thread (new ServiceInOut(ir, new PrintWriter(System.out), "."));
             lireStdOutSock.start();
             lireSockStdOut.start();
             lireStdOutSock.join();
