@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clienttcp;
 
 import java.io.BufferedReader;
@@ -18,11 +13,28 @@ import java.net.Socket;
  */
 public class ClientTCP {
 
+    /**
+     * Récupère le flux d'entrée d'une Socket et l'encapsule dans un BufferedReader 
+     * Un BufferedReader permet de Lire le texte à partir d'un flux d'entrée de caractères, en mettant
+     * en mémoire tampon les caractères afin de permettre une lecture efficace 
+     * des caractères, des tableaux et des lignes.
+     * @param p la SOcket
+     * @return le BufferedReader crée
+     * @throws IOException 
+     */
     private static BufferedReader getInput(Socket p) throws IOException {
         return new BufferedReader(new InputStreamReader(p.getInputStream()));
     }
   
-    
+    /**
+     * Récupère le flus de sortie de la socket et l'encapsule dans un PrintWriter
+     * Imprime des représentations formatées d'objets dans un 
+     * flux de sortie de texte. Cette classe implémente toutes les méthodes 
+     * d'impression trouvées dans PrintStream.
+     * @param p la Socket
+     * @return le PrintWriter crée
+     * @throws IOException 
+     */
     private static PrintWriter getoutput(Socket p) throws IOException{
         return new PrintWriter (new OutputStreamWriter(p.getOutputStream()));
     }
@@ -31,14 +43,16 @@ public class ClientTCP {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
+        //Se connecté au port 2000
         Socket l = new Socket("localhost",2000);
         System.out.println(l.getLocalSocketAddress());
-        BufferedReader ir = getInput(l);
-        PrintWriter reply = getoutput(l);
+        //
+        BufferedReader entreeSock = getInput(l);
+        PrintWriter sortieSock = getoutput(l);
         //Envoyer une chaine
-        reply.printf("Bonjour\n");reply.flush();
+        sortieSock.printf("Bonjour\n");sortieSock.flush();
         //Récupérer la réponse puis l'afficher
-        System.out.println(ir.readLine());
+        System.out.println(entreeSock.readLine());
     }
     
 }
