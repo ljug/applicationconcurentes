@@ -32,7 +32,7 @@ public class ServerTCP {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        ServerSocket l = new ServerSocket(2000);
+        ServerSocket l = new ServerSocket(2002);
         System.out.println(l.getLocalSocketAddress());
         while (true) {
             try (Socket serviceSocket = l.accept()) {
@@ -43,8 +43,8 @@ public class ServerTCP {
                 //System.out.println("Avant boucle");
                 while (!(line = ir.readLine()).equals(".")) {
                     //System.out.println("Dans boucle");
-                    System.out.printf("je répond ping %s\n", line);
-                    reply.printf("je répond ping %s\n", line);
+                    System.out.printf("j'ai recu %s\n", line);
+                    reply.printf("R: %s\n", line);
                     reply.flush();
                 }
             }

@@ -31,15 +31,16 @@ public class ClientTCP {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Socket l = null;
         try {
-            l = new Socket("localhost", 2000);
+            l = new Socket("localhost", 2001);
             System.out.println(l.getLocalSocketAddress());
             BufferedReader ir = getInput(l);
             PrintWriter envoyer = getoutput(l);
-            for (int i = 0; i < 100; i++) {
-                envoyer.printf("#%2d : Bonjour\n", i);
+            for (int i = 0; i < 1000; i++) {
+                envoyer.printf("#%3d : Bonjour\n", i);
+                Thread.sleep(10);
                 System.out.println(ir.readLine());
             }
             envoyer.printf(".\n");

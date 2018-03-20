@@ -5,5 +5,8 @@
         <group name="Accov-TCPMulti">
             <file>file:/C:/Users/Pascal%20Fares/mesgit/applicationconcurentes/ConcurenceJava/ClientServeurMultiT/plusieursClients_1/ClientTCPMultiClient/src/Clienttcp/ClientTCP.java</file>
         </group>
+        <group name="ACCOV-CSThread">
+            <file>file:/home/pascalfares/mesgit/applicationconcurentes/ConcurenceJava/ClientServeurMultiT/plusieursClients_1/ClientTCPMultiClient/src/Clienttcp/ClientTCP.java</file>
+        </group>
     </open-files>
 </project-private>

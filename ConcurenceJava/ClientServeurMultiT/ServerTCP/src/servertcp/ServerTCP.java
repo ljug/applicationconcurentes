@@ -9,7 +9,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- *
  * @author Pascal Fares
  */
 public class ServerTCP {
@@ -40,27 +39,28 @@ public class ServerTCP {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        //Créer une écoute sur le port 2000
-        ServerSocket l = new ServerSocket(2000);
-        System.out.println(l.getLocalSocketAddress());
+        ServerSocket ecoute;
+        ecoute = new ServerSocket(2000);
+        System.out.printf("L'adresse de la socket d'écoute est %s\n",
+                ecoute.getLocalSocketAddress());
         while (true) {
             //try-with-resource
-            try (Socket serviceSocket = l.accept()) {
+            try (Socket serviceSocket = ecoute.accept()) {
                 //Acceper un client l.accept()
                 System.out.println(serviceSocket.getRemoteSocketAddress());
                 BufferedReader ir = getInput(serviceSocket);
                 PrintWriter reply = getoutput(serviceSocket);
-                String line;                
-                while ((line = ir.readLine()) != null) {                  
-                    System.out.printf("je répond ping %s\n", line);
-                    reply.printf("je répond ping %s\n", line);
-                    reply.flush();
-                }
-                //clore la socket (réalisé par try-with resource
+                String line = ir.readLine();
+                System.out.printf("je répond ping %s\n", line);
+                reply.printf("je répond ping %s\n", line);
+                reply.flush();
+
             }
         }
+
     }
 
 }
