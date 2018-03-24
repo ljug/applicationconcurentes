@@ -16,8 +16,8 @@ public class DeadLock {
      */
     public static void main(String[] args) throws InterruptedException {
         // initialisation de 2 récipients liés l'un a l'autre
-        final Recipient r1 = new Recipient();
-        final Recipient r2 = new Recipient();
+        final Recipient r1 = new Recipient("R1");
+        final Recipient r2 = new Recipient("R2");
         r1.setLautre(r2);
         r2.setLautre(r1);
 
@@ -26,7 +26,9 @@ public class DeadLock {
         // on peut augmenter le nombre de cycles dans la boucle for
         Runnable tr1 = () -> {
             for (int i = 0; i < 20; i++) {
+                System.out.println("Remplir R1");
                 r1.remplis();
+                System.out.println("Vider R1");
                 r1.vide();
             }
         };
@@ -36,7 +38,9 @@ public class DeadLock {
         // on peut augmenter le nombre de cycles dans la boucle for
         Runnable tr2 = () -> {
             for (int i = 0; i < 20; i++) {
+                System.out.println("Remplir R2");
                 r2.remplis();
+                System.out.println("Vider R2");
                 r2.vide();
             }
         };
@@ -48,11 +52,12 @@ public class DeadLock {
         // creation des threads pour le vidage de la carafe
         // et du verre
         for (int i = 0; i < r1Apps.length; i++) {
-            r1Apps[i] = new Thread(tr1);
-            r2Apps[i] = new Thread(tr2);
+            r1Apps[i] = new Thread(tr1, "Recipient R1 Th"+i);
+            r2Apps[i] = new Thread(tr2, "Recipient R2 Th"+i);
         }
 
         // lancement des threads
+        System.out.println("Lancement ");
         for (int i = 0; i < r1Apps.length; i++) {
             r1Apps[i].start();
             r2Apps[i].start();
@@ -63,6 +68,7 @@ public class DeadLock {
             r1Apps[i].join();
             r2Apps[i].join();
         }
+        System.out.println("Fin ");
     }
 
 }
