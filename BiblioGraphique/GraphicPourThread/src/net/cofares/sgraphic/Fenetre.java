@@ -82,6 +82,7 @@ public class Fenetre extends JFrame {
         hauteur = height;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        //setSize(width, height);
         //Display the window.
         setMinimumSize(new Dimension(width, height));
         cp = this.getContentPane();
@@ -350,9 +351,11 @@ public class Fenetre extends JFrame {
                 }
                 x += dx;
                 if ((y + dy) <= 0 || (y + dy) >= hauteur) {
+                   
                     dy = -dy;
                 }
                 y += dy;
+                 System.out.printf("y=%d dy=%d H=%d\n", y,dy, hauteur);
             }
 
         } catch (IndexOutOfBoundsException e) {
