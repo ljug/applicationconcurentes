@@ -4,10 +4,13 @@
 
 0. [Définitions, rappels, positionnement et problématique](000/)
 1. [Notion processus Java](001/)
-2. [Thread Java : premier exemple][IntroThread/]
-3. [Thread java : Ordonnancement Démon][Ordonnancement/]
-4. [Thread Java : Partage code et données][Partage/]
-5. [Application Thread : Client Serveur TCP multi Thread][ClientServeurMultiT/]
+2. [Thread Java : premier exemple](IntroThread/)
+3. [Thread java : Ordonnancement Démon](Ordonnancement/)
+4. [Thread Java : Partage code et données](Partage/)
+5. [Application Thread : Client Serveur TCP multi Thread](ClientServeurMultiT/)
+6. [Besoin de synchroniser sur un exempple](/ACCOV/NecessiteSynchro/)
+7. [Les miniteurs a la Java]()
+7. [Deadlock](Problemes/DeadLock/)
 
 # Les TP
 
