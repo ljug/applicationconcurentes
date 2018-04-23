@@ -14,7 +14,7 @@ public class Recipient implements Serializable {
     // un verre a besoin d'une carafe pour se remplir
     private Recipient lautre;
 
-    private String nomRecipient;
+    private final String nomRecipient;
     
     public Recipient(String nom) {
         nomRecipient=nom;

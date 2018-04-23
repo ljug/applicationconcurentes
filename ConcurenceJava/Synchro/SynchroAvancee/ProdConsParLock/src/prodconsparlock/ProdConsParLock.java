@@ -33,7 +33,7 @@ public class ProdConsParLock {
 class SharedBuffer {
 
     //Un buffer d'une seule place (1 charactère)
-    private char c;
+    private char data;
 
     //Indique si il existe quelque chose dans le buffer
     private volatile boolean disponible;
@@ -80,19 +80,19 @@ class SharedBuffer {
         } finally {
             lock.unlock();
             if (ProdConsParLock.DEBUG) {
-                System.out.println("enter getSharedChar" + c);
+                System.out.println("enter getSharedChar" + data);
             }
-            return c;
+            return data;
         }
     }
 
-    void setSharedChar(char c) {
+    void setSharedChar(char d) {
         if (ProdConsParLock.DEBUG) {
-            System.out.println("enter setSharedChar brefore lock" + c);
+            System.out.println("enter setSharedChar brefore lock" + d);
         }
         lock.lock();
         if (ProdConsParLock.DEBUG) {
-            System.out.println("enter setSharedChar after lock" + c);
+            System.out.println("enter setSharedChar after lock" + d);
         }
         try {
             // guarded block. (un if ne suffit pas ... )
@@ -103,7 +103,7 @@ class SharedBuffer {
                     ie.printStackTrace();
                 }
             }
-            this.c = c;
+            this.data = d;
             disponible = true;
             condition.signalAll();
         } finally {
