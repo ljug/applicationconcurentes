@@ -29,7 +29,7 @@ public class Consomateur extends Thread {
     @Override
     public void run() {
         int value;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             value = cubbyhole.get();
             System.out.println("Consomateur #"
                     + this.number
