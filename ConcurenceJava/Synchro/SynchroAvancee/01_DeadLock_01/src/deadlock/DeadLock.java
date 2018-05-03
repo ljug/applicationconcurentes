@@ -8,16 +8,25 @@
  * fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, 
  * whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the Software. »
  */
+/**
+ * Version clone de synchronized
+ */
 package deadlock;
+
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  *
  * @author pascalfares
  */
 public class DeadLock {
-    public static boolean DEBUG=true;
+
+    public static boolean DEBUG = true;
+
     static class Friend {
 
+        private final Lock verrou = new ReentrantLock();
         private final String name;
 
         public Friend(String name) {
@@ -29,29 +38,43 @@ public class DeadLock {
         }
 
         public void fleche(Friend lanceur) {
-            if (DeadLock.DEBUG) System.out.printf("%nEF %s : <- %s ?.. ",this.name, lanceur.name);
-            synchronized (this) {
-                if (DeadLock.DEBUG) System.out.printf("%nF %s : <- %s oui.. ",this.name, lanceur.name);
-            
-                if (!DeadLock.DEBUG) System.out.format("F %s: %s"
-                        + "  me lance une flèche!%n",
-                        this.name, lanceur.getName());
-                lanceur.flecheRetour(this);
-                if (DeadLock.DEBUG) System.out.printf("%nF V %s : <- %s .. ",this.name, lanceur.name);
-            
-                
+            if (DeadLock.DEBUG) {
+                System.out.printf("%nEF %s : <- %s ?.. ", this.name, lanceur.name);
             }
+            verrou.lock();
+            try {
+                if (DeadLock.DEBUG) {
+                    System.out.printf("%nF %s : <- %s oui.. ", this.name, lanceur.name);
+                } else {
+                    System.out.format("F %s: %s"
+                            + "  me lance une flèche!%n",
+                            this.name, lanceur.getName());
+                }
+                lanceur.flecheRetour(this);
+                if (DeadLock.DEBUG) {
+                    System.out.printf("%nF V %s : <- %s .. ", this.name, lanceur.name);
+                }
+            } finally {
+                verrou.unlock();
+            }
+
         }
 
         public void flecheRetour(Friend lanceur) {
-            if (DeadLock.DEBUG) System.out.printf("%nEFR %s : <- %s ?.. ",this.name, lanceur.name);
-            
-            synchronized (this) {
-                if (DeadLock.DEBUG) System.out.printf("%nFR %s : <- %s oui.. ",this.name, lanceur.name);
-            
-                if (!DeadLock.DEBUG) System.out.format("FR V %s: %s"
-                        + " m'a relencé une flèche!%n",
-                        this.name, lanceur.getName());
+            if (DeadLock.DEBUG) {
+                System.out.printf("%nEFR %s : <- %s ?.. ", this.name, lanceur.name);
+            }
+            verrou.lock();
+            try {
+                if (DeadLock.DEBUG) {
+                    System.out.printf("%nFR %s : <- %s oui.. ", this.name, lanceur.name);
+                } else {
+                    System.out.format("FR V %s: %s"
+                            + " m'a relencé une flèche!%n",
+                            this.name, lanceur.getName());
+                }
+            } finally {
+                verrou.unlock();
             }
         }
     }
@@ -69,7 +92,7 @@ public class DeadLock {
                 alphonse.fleche(gaston);
             }
         }).start();
-        
+
         new Thread(() -> {
             while (true) {
                 gaston.fleche(alphonse);
