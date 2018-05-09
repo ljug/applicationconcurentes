@@ -27,12 +27,13 @@ public class Demon {
         
        if (args.length == 1) {
            if (args[0].equals("demon")) t.setDaemon(true);
-           t.start();
+           
        }
        else {
            System.out.println("Lancer en donnant demon "
                    + "ou utilisateur et voyez la différence!");
        }
+       t.start();
     }
 
 }

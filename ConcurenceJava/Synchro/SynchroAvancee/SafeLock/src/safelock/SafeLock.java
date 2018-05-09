@@ -96,7 +96,7 @@ public class SafeLock {
             Random random = new Random();
             for (;;) {
                 try {
-                    Thread.sleep(random.nextInt(10));
+                    Thread.sleep(10);
                 } catch (InterruptedException e) {
                 }
                 recepteur.bow(lanceur);

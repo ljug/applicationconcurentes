@@ -20,7 +20,7 @@ public class Philosophe extends Thread {
     private final int rank;
     private final Fourchette fourchetteGauche;
     private final Fourchette fourchetteDroite;
-    private int loopCount;
+    private final int loopCount;
 
     public Philosophe(int rank,
             Fourchette fourchetteGauche,
@@ -32,6 +32,7 @@ public class Philosophe extends Thread {
         this.loopCount = loopCount;
     }
 
+    @Override
     public void run() {
         while (true) {
             penser();
