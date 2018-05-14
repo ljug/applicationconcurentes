@@ -4,9 +4,6 @@
  */
 package net.cofares;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
 /**
  *
  * @author pfares

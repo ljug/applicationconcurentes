@@ -23,10 +23,11 @@ public class ExreentrantLock {
     }
     public void methodeB() {
         verrou.lock();
-        try {
+        try {     
             System.out.println("MethodeB : " + Thread.currentThread().getName());
-        } finally {
+        } finally {        
             verrou.unlock();
         }
+        
     }
 }

@@ -18,7 +18,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class ExecutorExemple {
     public static void main(String[] args) throws ExecutionException {
-        ExecutorService service = Executors.newFixedThreadPool(4);
+        ExecutorService service = Executors.newFixedThreadPool(5);
         // création de 20 futures pour récupérer le résultat 
         // de nos tâches
         Future<Integer>[] futures = new Future[20];
@@ -41,10 +41,10 @@ public class ExecutorExemple {
         for (int i = 0; i < futures.length; i++) {
             try {
                 // on donne 100ms à un future pour répondre
-                result[i] = futures[i].get(100, TimeUnit.MILLISECONDS);
+                result[i] = futures[i].get();
                 System.out.println(result[i]);
                 // gestion des exceptions
-            } catch (TimeoutException | ExecutionException | InterruptedException e) {
+            } catch (ExecutionException | InterruptedException e) {
                 result[i] = -1;
             }
         }

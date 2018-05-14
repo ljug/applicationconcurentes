@@ -42,20 +42,17 @@ public class DeadLock {
                 System.out.printf("%nEF %s : <- %s ?.. ", this.name, lanceur.name);
             }
             verrou.lock();
-            try {
-                if (DeadLock.DEBUG) {
-                    System.out.printf("%nF %s : <- %s oui.. ", this.name, lanceur.name);
-                } else {
-                    System.out.format("F %s: %s"
-                            + "  me lance une flèche!%n",
-                            this.name, lanceur.getName());
-                }
-                lanceur.flecheRetour(this);
-                if (DeadLock.DEBUG) {
-                    System.out.printf("%nF V %s : <- %s .. ", this.name, lanceur.name);
-                }
-            } finally {
-                verrou.unlock();
+
+            if (DeadLock.DEBUG) {
+                System.out.printf("%nF %s : <- %s oui.. ", this.name, lanceur.name);
+            } else {
+                System.out.format("F %s: %s"
+                        + "  me lance une flèche!%n",
+                        this.name, lanceur.getName());
+            }
+            lanceur.flecheRetour(this);
+            if (DeadLock.DEBUG) {
+                System.out.printf("%nF V %s : <- %s .. ", this.name, lanceur.name);
             }
 
         }
@@ -64,18 +61,17 @@ public class DeadLock {
             if (DeadLock.DEBUG) {
                 System.out.printf("%nEFR %s : <- %s ?.. ", this.name, lanceur.name);
             }
-            verrou.lock();
-            try {
-                if (DeadLock.DEBUG) {
-                    System.out.printf("%nFR %s : <- %s oui.. ", this.name, lanceur.name);
-                } else {
-                    System.out.format("FR V %s: %s"
-                            + " m'a relencé une flèche!%n",
-                            this.name, lanceur.getName());
-                }
-            } finally {
-                verrou.unlock();
+
+            if (DeadLock.DEBUG) {
+                System.out.printf("%nFR %s : <- %s oui.. ", this.name, lanceur.name);
+            } else {
+                System.out.format("FR V %s: %s"
+                        + " m'a relencé une flèche!%n",
+                        this.name, lanceur.getName());
             }
+
+            verrou.unlock();
+
         }
     }
 
