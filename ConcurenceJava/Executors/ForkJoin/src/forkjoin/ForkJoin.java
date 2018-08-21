@@ -33,7 +33,7 @@ public class ForkJoin {
     int processeurs = Runtime.getRuntime().availableProcessors();
     //Nous créons notre pool de thread pour nos tâches de fond
     System.out.println("Nb precessor = "+ processeurs);
-    ForkJoinPool pool = new ForkJoinPool(processeurs);
+    ForkJoinPool pool = new ForkJoinPool(processeurs/2);
     Long start = System.currentTimeMillis();
     
     //Nous lançons le traitement de notre tâche principale via le pool
