@@ -5,12 +5,16 @@
  */
 package syncwaitnotify;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author pascal fqres
  */
 public class Lattente implements Runnable {
-private Message msg;
+
+    private final Message msg;
 
     public Lattente(Message msg) {
         this.msg = msg;
@@ -20,17 +24,17 @@ private Message msg;
     public void run() {
         String name = Thread.currentThread().getName();
         synchronized (msg) {
-            try{
+            try {
                 System.out.println(name + " D " + Util.currentTime());
                 msg.wait();
-            }catch(InterruptedException e){
-                e.printStackTrace();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Lattente.class.getName()).log(Level.WARNING, null, ex);
             }
             System.out.println(name + " F " + Util.currentTime());
             //process the message now
-            System.out.println(name+" recu: "+msg.getMessage());
+            System.out.println(name + " recu: " + msg.getMessage());
         }
 
-         }
-    
+    }
+
 }

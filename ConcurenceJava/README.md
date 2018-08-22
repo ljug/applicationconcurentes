@@ -9,8 +9,9 @@
 4. [Thread Java : Partage code et données](Partage/)
 5. [Application Thread : Client Serveur TCP multi Thread](ClientServeurMultiT/)
 6. [Besoin de synchroniser sur un exempple](/ACCOV/NecessiteSynchro/)
-7. [Les moniteurs à la Java]()
-7. [Deadlock](Problemes/DeadLock/)
+7. [Les moniteurs à la Java](Synchro/)
+7. [Deadlock](Problemes/)
+8. [Lock Condition et semaphores](Synchro/SynchroAvancee/)
 
 # Les TP
 
