@@ -1,3 +1,9 @@
+# Les modèles de conception et de développements du paradigme de programmation multithread et concurrent
+
+## Objet actif
+
+
+
 <p>In <a href="https://en.wikipedia.org/wiki/Software_engineering" title="Software engineering" style="text-decoration: none; color: rgb(11, 0, 128); background: none;">software engineering</a>,<span>&nbsp;</span><b>concurrency patterns</b><span>&nbsp;</span>are those types of<span>&nbsp;</span><a href="https://en.wikipedia.org/wiki/Design_pattern_(computer_science)"  title="Design pattern (computer science)" style="text-decoration: none; color: rgb(11, 0, 128); background: none;">design patterns</a><span>&nbsp;</span>that deal with the<span>&nbsp;</span><a href="https://en.wikipedia.org/wiki/Multi-threaded" class="mw-redirect" title="Multi-threaded" style="text-decoration: none; color: rgb(11, 0, 128); background: none;">multi-threaded</a><span>&nbsp;</span>programming paradigm. Examples of this class of patterns include:</p>
 <ul><li><a href="https://en.wikipedia.org/wiki/Active_Object" title="Active Object" >Active Object</a>-<a href="https://en.wikipedia.org/wiki/Concurrency_pattern#cite_note-1">[1]</a><a href="https://en.wikipedia.org/wiki/Concurrency_pattern#cite_note-2" style="text-decoration: none; color: rgb(11, 0, 128); background: none;">[2]</a></li>
 <li style="margin-bottom: 0.1em;"><a href="https://en.wikipedia.org/wiki/Balking_pattern" title="Balking pattern" style="text-decoration: none; color: rgb(11, 0, 128); background: none;">Balking pattern</a></li>
