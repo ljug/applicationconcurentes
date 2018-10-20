@@ -22,8 +22,8 @@ public class CDDC {
     public static void main(String[] args) {
         try {
             Data d = new Data();
-            Runnable tache1 = new Tache1(d);
-            Runnable tache2 = new Tache2(d);
+            Tache1 tache1 = new Tache1(d);
+            Tache2 tache2 = new Tache2(d);
 
             Thread t1 = new Thread(tache1);
             Thread t2 = new Thread(tache2);
@@ -31,7 +31,7 @@ public class CDDC {
             t2.start();
             t1.join();
             t2.join();
-            System.out.printf("\nSe termine avec la valeur %d devrait être 200000!\n", d.getDonnee());
+            System.out.printf("\nSe termine avec la valeur %d devrait être %d!\n", d.getDonnee(), tache1.getDonneePriv()+tache2.getDonneePrivee());
         } catch (InterruptedException ex) {
             Logger.getLogger(CDDC.class.getName()).log(Level.SEVERE, null, ex);
         }
