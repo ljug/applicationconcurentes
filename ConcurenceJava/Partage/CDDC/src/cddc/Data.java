@@ -9,28 +9,22 @@ package cddc;
  *
  * @author Pascal Fares
  */
-public class Data {   
-    private int donnee;
-    public Data() {
-        donnee=0;
-    }
-    public void inc() {
-        donnee++;
-    }
-    /**
-     * Get the value of donee
-     *
-     * @return the value of donee
-     */
-    public int getDonee() {
-        return donnee;
-    }
-    /**
-     * Set the value of donee
-     *
-     * @param donee new value of donee
-     */
-    public void setDonee(int donee) {
-        this.donnee = donee;
-    }   
+public class Data {
+	private int donnee;
+
+	public Data() {
+		setDonnee(0);
+	}
+
+	public void inc() {
+		setDonnee(getDonnee() + 1);
+	}
+
+	public int getDonnee() {
+		return donnee;
+	}
+
+	public void setDonnee(int donnee) {
+		this.donnee = donnee;
+	}
 }
