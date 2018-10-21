@@ -49,6 +49,7 @@ public class RunAny {
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader br = new BufferedReader(isr);
         String line;
+        //Lire les résultats issue de la commande
         while ((line = br.readLine()) != null) {
             System.out.println(line);
         }
