@@ -29,8 +29,8 @@ public class LeNotifieur implements Runnable {
             Thread.sleep(1000);
             synchronized (msg) {
                 msg.setMessage(name + " transmission d'une notification effectué");
-                msg.notify();
-                //msg.notifyAll();
+                //msg.notify();
+                msg.notifyAll();
             }
         } catch (InterruptedException ex) {
             Logger.getLogger(LeNotifieur.class.getName()).log(Level.SEVERE, null, ex);

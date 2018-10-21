@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package exempleetformat;
 
 /**
@@ -33,6 +28,7 @@ class HeritageThread extends Thread {
             /* Thread.sleep(3);
             */
         }
+        System.out.println(" est il vivant? " + t.isAlive());
         //t.join();
         System.out.println("Initial main se termine");
     }

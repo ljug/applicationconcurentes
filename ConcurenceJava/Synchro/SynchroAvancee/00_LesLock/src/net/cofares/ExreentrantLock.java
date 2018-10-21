@@ -12,26 +12,34 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author pfares
  */
 public class ExreentrantLock {
+
     private final Lock verrou = new ReentrantLock();
+
     public void methodeA() throws InterruptedException {
-        verrou.lock();
-        try {
-            System.out.println("MethodeA : " + Thread.currentThread().getName());
-            Thread.sleep(2000);
-            methodeB();
-            Thread.sleep(5000);
-        } finally {
-            verrou.unlock();
+        if (verrou.tryLock()) {
+            try {
+                System.out.println("MethodeA : " + Thread.currentThread().getName());
+                Thread.sleep(2000);
+                methodeB();
+                Thread.sleep(5000);
+            } finally {
+                verrou.unlock();
+            }
+        } else {
+            System.out.println("MethodeA : Je n'ai pas l'autorisation" + Thread.currentThread().getName());
         }
 
     }
 
     public void methodeB() {
-        verrou.lock();
-        try {
-            System.out.println("MethodeB : " + Thread.currentThread().getName());
-        } finally {
-            verrou.unlock();
+        if (verrou.tryLock()) {
+            try {
+                System.out.println("MethodeB : " + Thread.currentThread().getName());
+            } finally {
+                verrou.unlock();
+            }
+        } else {
+            System.out.println("MethodeB : Je n'ai pas lautorisation" + Thread.currentThread().getName());
         }
     }
 }

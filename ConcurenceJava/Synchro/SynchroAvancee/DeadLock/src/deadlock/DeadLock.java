@@ -64,19 +64,15 @@ public class DeadLock {
                 = new Friend("A");
         final Friend gaston
                 = new Friend("B");
-        new Thread(new Runnable() {
-            public void run() {
-                while (true) {
-                    alphonse.fleche(gaston);
-                }
+        new Thread(() -> {
+            while (true) {
+                alphonse.fleche(gaston);
             }
         }).start();
         
-        new Thread(new Runnable() {
-            public void run() {
-                while (true) {
-                    gaston.fleche(alphonse);
-                }
+        new Thread(() -> {
+            while (true) {
+                gaston.fleche(alphonse);
             }
         }).start();
         /**/

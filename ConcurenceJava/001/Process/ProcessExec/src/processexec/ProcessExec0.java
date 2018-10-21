@@ -32,6 +32,7 @@ public class ProcessExec0 {
         System.out.println("Début du programme");
         try {
             String[] commande = {"ls", "-l", "-a", CHEMIN};
+            //Runtime.getRuntime().exec("ls -l -a /home/pascalfares/");
             Runtime.getRuntime().exec(commande);
         } catch (IOException e) {
             e.printStackTrace();
