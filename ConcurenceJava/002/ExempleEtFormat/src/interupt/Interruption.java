@@ -1,4 +1,4 @@
-package exemple;
+package interupt;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -31,7 +31,7 @@ public class Interruption implements Runnable {
         String rep;
         while (true) {
             //rep=sc.next();
-            rep=JOptionPane.showInputDialog("Choisir un nombre 1,2,3 ");
+            rep=JOptionPane.showInputDialog("Choisir un nombre \n 1,2,3 ");
             switch (rep) {
                 case "1":
                     t1.interrupt();

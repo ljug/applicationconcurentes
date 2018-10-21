@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package exempleetformat;
+package exemples;
 
 import java.util.Map;
 
@@ -11,7 +11,7 @@ import java.util.Map;
  *
  * @author pascalfares
  */
-public class ExempleEtFormat {
+public class ThreadSleep {
 
     /**
      * @param args the command line arguments
