@@ -4,25 +4,42 @@
  */
 package net.cofares;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  *
  * @author pfares
  */
 public class ExreentrantLock {
 
+    private final Lock verrou = new ReentrantLock();
+
     public void methodeA() throws InterruptedException {
-        synchronized (this ) {
-            System.out.println("MethodeA : " + Thread.currentThread().getName());
-            Thread.sleep(2000);
-            methodeB();
-            Thread.sleep(5000);
-        } 
+        if (verrou.tryLock()) {
+            try {
+                System.out.println("MethodeA : " + Thread.currentThread().getName());
+                Thread.sleep(2000);
+                methodeB();
+                Thread.sleep(5000);
+            } finally {
+                verrou.unlock();
+            }
+        } else {
+            System.out.println("MethodeA : Je n'ai pas l'autorisation" + Thread.currentThread().getName());
+        }
 
     }
 
     public void methodeB() {
-        synchronized (this ) {
-            System.out.println("MethodeB : " + Thread.currentThread().getName());
-        } 
+        if (verrou.tryLock()) {
+            try {
+                System.out.println("MethodeB : " + Thread.currentThread().getName());
+            } finally {
+                verrou.unlock();
+            }
+        } else {
+            System.out.println("MethodeB : Je n'ai pas lautorisation" + Thread.currentThread().getName());
+        }
     }
 }

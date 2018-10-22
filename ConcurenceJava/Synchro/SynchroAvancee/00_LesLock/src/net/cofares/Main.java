@@ -32,13 +32,10 @@ public class Main {
             }
         }, "Thread 0");
 
-        threads[1] = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Debut thread 1");
-                sut.methodeB();
-                System.out.println("Fin thread 1");
-            }
+        threads[1] = new Thread(() -> {
+            System.out.println("Debut thread 1");
+            sut.methodeB();
+            System.out.println("Fin thread 1");
         }, "Thread 1");
 
         threads[0].start();

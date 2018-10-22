@@ -25,14 +25,14 @@ public class ProcessExec1 {
      * Un chemin pour vos execution et réféence de fichier, adaptez le a votre
      * Environement
      */
-    public static final String CHEMIN = "/home/pascalfares/tp001";
+    public static final String CHEMIN = "/";
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         System.out.println("Début du programme 1");
         try {
-            String[] commande = {"ls", "-l", "-a", CHEMIN};
+            String[] commande = {"ls", "-l", "-R", CHEMIN};
             Process p = Runtime.getRuntime().exec(commande);
             p.waitFor();
         } catch (IOException e) {

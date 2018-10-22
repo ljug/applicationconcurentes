@@ -1,3 +1,7 @@
+/*
+ * La classe ReentrantLock est une implémentation de l'interface Lock qui permet d'utiliser des verrous de manière réentrante.
+ * Le verrou est obtenu par un thread si aucun autre thread ne le possède ou si le verrou est déjà détenu par le thread lui-même.
+ */
 package net.cofares;
 
 import java.util.concurrent.locks.Lock;
@@ -23,11 +27,10 @@ public class ExreentrantLock {
     }
     public void methodeB() {
         verrou.lock();
-        try {     
+        try {
             System.out.println("MethodeB : " + Thread.currentThread().getName());
-        } finally {        
+        } finally {
             verrou.unlock();
         }
-        
     }
 }
