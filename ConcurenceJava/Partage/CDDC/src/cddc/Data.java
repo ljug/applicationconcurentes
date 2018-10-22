@@ -1,25 +1,27 @@
 package cddc;
 
 /**
+ * Exemple de données, sera partagé entre plusieurs Threads
  *
  * @author Pascal Fares
  */
 public class Data {
-	private int donnee;
 
-	public Data() {
-		setDonnee(0);
-	}
+    private int donnee;
 
-	public void inc() {
-		setDonnee(getDonnee() + 1);
-	}
+    public Data() {
+        setDonnee(0);
+    }
 
-	public int getDonnee() {
-		return donnee;
-	}
+    public void inc() {
+        setDonnee(getDonnee() + 1);
+    }
 
-	public void setDonnee(int donnee) {
-		this.donnee = donnee;
-	}
+    public int getDonnee() {
+        return donnee;
+    }
+
+    public void setDonnee(int donnee) {
+        this.donnee = donnee;
+    }
 }

@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class CDDC {
 
     /**
-     * Code différents Données commune
+     * Test : Code différents Données commune
      *
      * @param args the command line arguments
      */
@@ -26,7 +26,7 @@ public class CDDC {
             t2.start();
             t1.join();
             t2.join();
-            System.out.printf("\nSe termine avec la valeur %d devrait être %d!\n", d.getDonnee(), tache1.getDonneePriv()+tache2.getDonneePrivee());
+            System.out.printf("\nSe termine avec la valeur %d devrait être %d!\n", d.getDonnee(), tache1.getDonneePriv() + tache2.getDonneePrivee());
         } catch (InterruptedException ex) {
             Logger.getLogger(CDDC.class.getName()).log(Level.SEVERE, null, ex);
         }
