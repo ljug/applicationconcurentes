@@ -30,13 +30,13 @@ public class Main {
             } catch (InterruptedException ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }, "Thread 0");
+        }, " Thread 0");
 
         threads[1] = new Thread(() -> {
             System.out.println("Debut thread 1");
             sut.methodeB();
             System.out.println("Fin thread 1");
-        }, "Thread 1");
+        }, " Thread 1");
 
         threads[0].start();
         threads[1].start();
