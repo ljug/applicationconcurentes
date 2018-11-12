@@ -18,7 +18,7 @@ public class ExreentrantLock {
     public void methodeA() throws InterruptedException {
         if (verrou.tryLock()) {
             try {
-                System.out.println("MethodeA : " + Thread.currentThread().getName());
+                System.out.println("MethodeA : " + Thread.currentThread().getName() + " Le lock " + verrou);
                 Thread.sleep(2000);
                 methodeB();
                 Thread.sleep(5000);
@@ -26,7 +26,7 @@ public class ExreentrantLock {
                 verrou.unlock();
             }
         } else {
-            System.out.println("MethodeA : Je n'ai pas l'autorisation " + Thread.currentThread().getName());
+            System.out.println("MethodeA : Je n'ai pas l'autorisation " + Thread.currentThread().getName()+ " Le lock " + verrou);
         }
 
     }
@@ -34,12 +34,12 @@ public class ExreentrantLock {
     public void methodeB() {
         if (verrou.tryLock()) {
             try {
-                System.out.println("MethodeB : " + Thread.currentThread().getName());
+                System.out.println("MethodeB : " + Thread.currentThread().getName()+ " Le lock " + verrou);
             } finally {
                 verrou.unlock();
             }
         } else {
-            System.out.println("MethodeB : Je n'ai pas lautorisation" + Thread.currentThread().getName());
+            System.out.println("MethodeB : Je n'ai pas lautorisation" + Thread.currentThread().getName()+ " Le lock " + verrou);
         }
     }
 }
