@@ -15,18 +15,18 @@ import java.util.concurrent.TimeUnit;
  */
 public class Executor {
 
-    static class MyRunnable implements Runnable {
+    static class MonRunnable implements Runnable {
 
-        private final long countUntil;
+        private final long counterJusqua;
 
-        MyRunnable(long countUntil) {
-            this.countUntil = countUntil;
+        MonRunnable(long nombreDeCompte) {
+            this.counterJusqua = nombreDeCompte;
         }
 
         @Override
         public void run() {
             long sum = 0;
-            for (long i = 1; i < countUntil; i++) {
+            for (long i = 1; i <= counterJusqua; i++) {
                 sum += i;
             }
             System.out.println(sum);
@@ -34,21 +34,22 @@ public class Executor {
     }
 
     /**
-     * @param args the command line arguments
+     * @param args Paramètre de la ligne de commande
+     * @throws java.lang.InterruptedException
      */
     public static void main(String[] args) throws InterruptedException {
         ExecutorService executor;
         executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         for (int i = 0; i < 500; i++) {
-            Runnable worker = new MyRunnable(10000000L + i);
+            Runnable worker = new MonRunnable(10000000L + i);
             executor.execute(worker);
         }
-        // This will make the executor accept no new threads
-        // and finish all existing threads in the queue
+        // L'executor n'accptera plus de nouveau Thread
+        // et terminera les Thread courant
         executor.shutdown();
-        // Wait until all threads are finish
+        // Attendre la fin de tous les Thread penndant maximum 10 secondes
         executor.awaitTermination(10,TimeUnit.SECONDS);
-        System.out.println("Finished all threads");
+        System.out.println("Tous les Thread sont terminés");
     }
 
 }
