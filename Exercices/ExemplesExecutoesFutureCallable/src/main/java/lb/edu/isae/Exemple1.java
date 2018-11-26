@@ -17,7 +17,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-
 /**
  *
  * @author pascalfares
@@ -25,9 +24,11 @@ import java.util.concurrent.Future;
 public class Exemple1 {
 
     /**
-     * 
-     * @param n taille du pool 
-     * @throws java.lang.InterruptedException 
+     *
+     * @param n taille du pool
+     * @throws java.lang.InterruptedException
+     * @throws java.util.concurrent.ExecutionException
+     * @throws java.io.UnsupportedEncodingException
      */
     public static void testExecutorAndFutureCallable(int n) throws InterruptedException, ExecutionException, UnsupportedEncodingException {
         PrintStream out = new PrintStream(System.out, true, "UTF-8");
@@ -52,44 +53,47 @@ public class Exemple1 {
         Thread.sleep(1000);
         debut = System.currentTimeMillis();
         long factorialof10 = result10.get();
-        out.printf("%n<%d> factorial of 10 is : %d%n", System.currentTimeMillis() - debut,factorialof10);
+        out.printf("%n<%d> factorial of 10 is : %d%n", System.currentTimeMillis() - debut, factorialof10);
         out.println("Appel de get d'un Future pour récupérer la valeur de factorielle 15");
         debut = System.currentTimeMillis();
         long factorialof15 = result15.get();
-        out.printf("%n<%d> factorial of 15 is : %d%n", System.currentTimeMillis() - debut,factorialof15);
-        
+        out.printf("%n<%d> factorial of 15 is : %d%n", System.currentTimeMillis() - debut, factorialof15);
+
         out.println("Appel de get d'un Future pour récupérer la valeur de factorielle 20");
         debut = System.currentTimeMillis();
         long factorialof20 = result20.get();
-        out.printf("%n<%d> factorial of 20 is : %d%n", System.currentTimeMillis() - debut,factorialof20);
+        out.printf("%n<%d> factorial of 20 is : %d%n", System.currentTimeMillis() - debut, factorialof20);
         out.println("Appel de get d'un Future pour récupérer la valeur de factorielle 10 bis");
         debut = System.currentTimeMillis();
         long factorialof101 = result101.get();
-        out.printf("%n<%d> factorial of 10 is : %d%n", System.currentTimeMillis() - debut,factorialof101);
+        out.printf("%n<%d> factorial of 10 is : %d%n", System.currentTimeMillis() - debut, factorialof101);
         out.println("Appel de get d'un Future pour récupérer la valeur de factorielle 15 bis");
         debut = System.currentTimeMillis();
         long factorialof151 = result151.get();
-        out.printf("%n<%d> factorial of 15 is : %d%n", System.currentTimeMillis() - debut,factorialof151);
-        
+        out.printf("%n<%d> factorial of 15 is : %d%n", System.currentTimeMillis() - debut, factorialof151);
+
         out.println("Appel de get d'un Future pour récupérer la valeur de factorielle 20 bis");
         debut = System.currentTimeMillis();
         long factorialof201 = result201.get();
-        out.printf("%n<%d> factorial of 20 is : %d%n", System.currentTimeMillis() - debut,factorialof201);
-        
+        out.printf("%n<%d> factorial of 20 is : %d%n", System.currentTimeMillis() - debut, factorialof201);
+
         es.shutdown();
         out.printf("Fin du test du ThreadPool, de %d %n%n", n);
     }
+
     /**
      * @param args the command line arguments
+     * @throws java.lang.InterruptedException
+     * @throws java.util.concurrent.ExecutionException
+     * @throws java.io.UnsupportedEncodingException
      */
     public static void main(String[] args) throws InterruptedException, ExecutionException, UnsupportedEncodingException {
         // creating thread pool to execute task which implements Callable 
         //Nous essayerons avec plusieur taille de Pool
         testExecutorAndFutureCallable(1);
         testExecutorAndFutureCallable(4);
-        
-       testExecutorAndFutureCallable(16);
-        System.exit(0);
+
+        testExecutorAndFutureCallable(16);
     }
 
 }
