@@ -16,4 +16,5 @@ Construire TB pour qu’il attende TC.
 Construire TA pour qu’il attende TB.
 Lancer les 3 threads et observer (tester).
 * *Question 5)* Que ce passerait-il si on ajoutait un thread TD avec TD<TC et TA<TD ? développer la solution et observer
+* *Question 5)* Généraliser au cas de n threads T1,...,Ti,…Tn ou n est un argument passé au programme, En supposant que Tn ne dépend d'aucun Thread et T1 est le dernier à s’exécuter.
 
