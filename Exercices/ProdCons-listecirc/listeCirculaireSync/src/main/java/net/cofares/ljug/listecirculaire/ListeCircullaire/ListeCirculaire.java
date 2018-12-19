@@ -47,7 +47,7 @@ public class ListeCirculaire<D> {
      * @param d : élément à produire
      * @throws ListePleine Si liste pleine (pas possible de déposer)
      */
-    public void put(D d) throws ListePleine, InterruptedException {
+    public void put(D d) throws InterruptedException {
         synchronized (pourSync) {
             //si liste pas pleine
             while (estPleine()) {

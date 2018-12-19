@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.cofares.ljug</groupId>
-    <artifactId>listeCirculaireSync-proto</artifactId>
+    <artifactId>listeCirculaireSync</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <licenses>
@@ -115,7 +115,7 @@
             </url>
         </repository>
     </distributionManagement>
-    <name>ListeCirculaire-proto</name>
+    <name>ListeCirculaireSync</name>
     <description>Liste cicruclaire de taille fixe pour producteur/comsomateur - un prototype : version avec création de tableaux générique.
         CETTE VERSION (avec le -proto) NE GÈRE PAS LA CONCURENCE </description>
     <url>http://java.cofares.net/</url>

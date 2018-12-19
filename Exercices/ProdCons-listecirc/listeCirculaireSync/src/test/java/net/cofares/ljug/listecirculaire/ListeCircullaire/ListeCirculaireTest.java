@@ -41,9 +41,10 @@ public class ListeCirculaireTest {
      * Test of put method, of class ListeCirculaire.
      * @throws net.cofares.ljug.exeptions.ListePleine
      * @throws net.cofares.ljug.exeptions.ListeVide
+     * @throws java.lang.InterruptedException
      */
     @Test
-    public void testPut() throws ListePleine, ListeVide {
+    public void testPut() throws ListePleine, ListeVide, InterruptedException {
         System.out.println("put");
         Integer d = 10;
         ListeCirculaire<Integer> instance = new ListeCirculaire<>(Integer[].class,10);
@@ -55,28 +56,21 @@ public class ListeCirculaireTest {
     }
     
     @Test
-    public void testMultiPutGet() {
+    public void testMultiPutGet() throws InterruptedException {
         System.out.println("Multi put get");
         Integer d = 10;
         ListeCirculaire<Integer> instance = new ListeCirculaire<>(Integer[].class,10);
         
         for (int i=1; i<=10;i++) {
-            try {
-                instance.put(i);
-            } catch (ListePleine ex) {
-                //Logger.getLogger(ListeCirculaireTest.class.getName()).log(Level.SEVERE, "ne dvrais pas être plein", ex);
-                fail("N'aurait pas du etre plein nbElem= "+instance.getNbElem());
-            }
+            instance.put(i);
+            
             assertEquals(i, instance.getNbElem());
         }
         //Maitenant la 
         // TODO review the generated test code and remove the default call to fail.
-        try {
+       
                 instance.put(11);
-            } catch (ListePleine ex) {
-                //Logger.getLogger(ListeCirculaireTest.class.getName()).log(Level.SEVERE, "Normal 11ème element", ex);
-                //Normal que ce soit plein
-            }
+            
         //Toujours 10
         assertEquals(10, instance.getNbElem());
         Integer res;
@@ -105,7 +99,7 @@ public class ListeCirculaireTest {
      */
     @Test
     @Ignore
-    public void testGet() throws ListePleine, ListeVide {
+    public void testGet() throws ListePleine, ListeVide, InterruptedException {
         System.out.println("get");
         Integer d = 1;
         ListeCirculaire<Integer> instance = new ListeCirculaire<>(Integer[].class,1);
@@ -149,11 +143,11 @@ public class ListeCirculaireTest {
      * Test of getNbElem method, of class ListeCirculaire.
      */
     @Test
-    public void testGetNbElem() {
+    public void testGetNbElem() throws InterruptedException, ListeVide {
         System.out.println("getNbElem");
         Integer d = 1;
         ListeCirculaire<Integer> instance = new ListeCirculaire<>(Integer[].class,1);
-        try {
+       
             instance.put(d);
             assertEquals(1, instance.getNbElem());
             Integer result = instance.get();
@@ -163,10 +157,7 @@ public class ListeCirculaireTest {
             instance.put(d);
             //Normalement on a pas pu ajouter donc reste 1 ==> il y une exeption
             assertEquals(1, instance.getNbElem());
-        } catch (ListePleine | ListeVide ex) {
-            //Logger.getLogger(ListeCirculaireTest.class.getName()).log(Level.SEVERE, "nbElem "+instance.getNbElem(), ex);
-            //Tout est normal
-        }
+        
     }
     
 }

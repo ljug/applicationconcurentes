@@ -50,30 +50,30 @@ public class Exemple1 {
         Future<Long> result201 = es.submit(new CalculFactorielle(20));
         out.println("Appel de get d'un Future pour récupérer la valeur de factorielle 10");
         out.printf("%n<%d> est le temps pour lancer les factorielle : %n", System.currentTimeMillis() - debut);
-        Thread.sleep(1000);
-        debut = System.currentTimeMillis();
+        //Thread.sleep(1000);
+        //debut = System.currentTimeMillis();
         long factorialof10 = result10.get();
         out.printf("%n<%d> factorial of 10 is : %d%n", System.currentTimeMillis() - debut, factorialof10);
         out.println("Appel de get d'un Future pour récupérer la valeur de factorielle 15");
-        debut = System.currentTimeMillis();
+        //debut = System.currentTimeMillis();
         long factorialof15 = result15.get();
         out.printf("%n<%d> factorial of 15 is : %d%n", System.currentTimeMillis() - debut, factorialof15);
 
         out.println("Appel de get d'un Future pour récupérer la valeur de factorielle 20");
-        debut = System.currentTimeMillis();
+        
         long factorialof20 = result20.get();
         out.printf("%n<%d> factorial of 20 is : %d%n", System.currentTimeMillis() - debut, factorialof20);
         out.println("Appel de get d'un Future pour récupérer la valeur de factorielle 10 bis");
-        debut = System.currentTimeMillis();
+        
         long factorialof101 = result101.get();
         out.printf("%n<%d> factorial of 10 is : %d%n", System.currentTimeMillis() - debut, factorialof101);
         out.println("Appel de get d'un Future pour récupérer la valeur de factorielle 15 bis");
-        debut = System.currentTimeMillis();
+       
         long factorialof151 = result151.get();
         out.printf("%n<%d> factorial of 15 is : %d%n", System.currentTimeMillis() - debut, factorialof151);
 
         out.println("Appel de get d'un Future pour récupérer la valeur de factorielle 20 bis");
-        debut = System.currentTimeMillis();
+        //debut = System.currentTimeMillis();
         long factorialof201 = result201.get();
         out.printf("%n<%d> factorial of 20 is : %d%n", System.currentTimeMillis() - debut, factorialof201);
 

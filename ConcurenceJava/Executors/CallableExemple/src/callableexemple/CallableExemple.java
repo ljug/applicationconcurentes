@@ -16,21 +16,19 @@ import java.util.concurrent.FutureTask;
 public class CallableExemple {
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
-        Callable<String> callThread = new Callable<String>() {
-
-            public String call() throws Exception {
-                try {
-                    // on simule de façon simple un calcul
-                    // qui prend du temps
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    // rien
-                }
-                // et l'on retourne le nom du thread
-                // dans lequel on se trouve
-                return Thread.currentThread().getName();
+        Callable<String> callThread = () -> {
+            try {
+                // on simule de façon simple un calcul
+                // qui prend du temps
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                // rien
             }
+            // et l'on retourne le nom du thread
+            // dans lequel on se trouve
+            return Thread.currentThread().getName();
         };
+        
         FutureTask<String> future = new FutureTask<>(callThread);
 
         // un future est une instance de Runnable, on peut 

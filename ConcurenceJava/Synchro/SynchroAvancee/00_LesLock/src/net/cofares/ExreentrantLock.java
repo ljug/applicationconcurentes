@@ -12,9 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author pfares
  */
 public class ExreentrantLock {
-
     private final Lock verrou = new ReentrantLock();
-
     public void methodeA() throws InterruptedException {
         if (verrou.tryLock()) {
             try {

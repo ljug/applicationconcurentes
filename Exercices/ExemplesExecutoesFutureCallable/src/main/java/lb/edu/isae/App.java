@@ -22,9 +22,12 @@ public class App {
         } else {
             try {
                 int cores = Runtime.getRuntime().availableProcessors();               
-                testExecutorAndFutureCallable(1);
-                testExecutorAndFutureCallable(cores);
-                testExecutorAndFutureCallable(2*cores);
+                Exemple2.testExecutorAndFutureCallable(1);
+                System.out.println("----------------------");
+                Exemple2.testExecutorAndFutureCallable(cores);
+                System.out.println("---------------------- ...");
+                Exemple2.testExecutorAndFutureCallable(2*cores);
+                System.out.println("---------------------- Fin");
             } catch (InterruptedException | ExecutionException ex) {
                 Logger.getLogger(App.class.getName()).log(Level.INFO, null, ex);
             } catch (UnsupportedEncodingException ex) {
