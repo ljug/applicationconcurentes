@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  /*---------------------------------------------------------------------------------*/
 class UneLigne extends JComponent {
 
-    final static BasicStroke stroke = new BasicStroke(10.0f);
+    final static BasicStroke STROKE = new BasicStroke(10.0f);
     Color couleur;
     int x1, y1, x2, y2;
 
@@ -45,7 +45,7 @@ class UneLigne extends JComponent {
         super.paint(g2);
         // Now we can compute the corner points...
         g2.setColor(couleur);
-        g2.setStroke(stroke);
+        g2.setStroke(STROKE);
         g2.drawLine(x1, y1, x2, y2);
     }
 
@@ -64,7 +64,7 @@ class UnPoint extends UneLigne {
 public class Fenetre extends JFrame {
 
     private int largeur, hauteur;
-    private Container cp;
+    private final Container cp;
 
     /*-----------------------------  LES CONSTRUCTEURS  ------------------------------*/
     /**
@@ -108,7 +108,7 @@ public class Fenetre extends JFrame {
      *
      * @param couleur
      */
-    public void remplir(String couleur) {
+    private void remplir(String couleur) {
         try {
             cp.setBackground(Couleur.parseCouleur(couleur));
         } catch (ColorNotFoundException e) {
@@ -197,6 +197,7 @@ public class Fenetre extends JFrame {
      *
      * @param pt1
      * @param pt2
+     * @param couleur
      */
     public void tracerLigne(Point pt1, Point pt2, String couleur) {
         tracerLigne(pt1.x, pt1.y, pt2.x, pt2.y, couleur);
@@ -204,6 +205,8 @@ public class Fenetre extends JFrame {
 
     /**
      * Trace une ligne noire entre les points pt1 et pt2
+     * @param pt1
+     * @param pt2
      */
     public void tracerLigne(Point pt1, Point pt2) {
         tracerLigne(pt1.x, pt1.y, pt2.x, pt2.y, "black");
@@ -237,7 +240,7 @@ public class Fenetre extends JFrame {
 
             // Bresenham algorithm. Implementation entirely poached from Kenny Hoff (95).
             int dX = x2 > x1 ? x2 - x1 : x1 - x2;
-            int dY = y2 > y1 ? y2 - y1 : y1 - y2;;
+            int dY = y2 > y1 ? y2 - y1 : y1 - y2;
 
             if (x1 > x2) {
                 Xincr = -1;
@@ -313,9 +316,11 @@ public class Fenetre extends JFrame {
     }
 
     /*--------------------   TRACER UNE LIGNE POINT A POINT  -------------------*/
+    
     /**
      * Trace point par point une ligne en couleur du point (x1, y1) au point
      * (x2, y2)
+     * @param 
      */
     private void deplacerPointAPoint(int x, int y, int dx, int dy, String couleur) {
         /* intervalle entre le trace de 2 points. Pour une meilleure visualisation du parallelisme */
@@ -374,6 +379,9 @@ public class Fenetre extends JFrame {
 
     /**
      * Trace point par point une ligne en couleur du point pt1 au point pt2
+     * @param pt1
+     * @param pt2
+     * @param couleur
      */
     public void tracerLignePointAPoint(Point pt1, Point pt2, String couleur) {
         tracerLignePointAPoint(pt1.x, pt1.y, pt2.x, pt2.y, couleur);
@@ -385,6 +393,8 @@ public class Fenetre extends JFrame {
 
     /**
      * Trace point par point une ligne noire du point pt1 au point pt2
+     * @param pt1
+     * @param pt2
      */
     public void tracerLignePointAPoint(Point pt1, Point pt2) {
         tracerLignePointAPoint(pt1.x, pt1.y, pt2.x, pt2.y, "black");

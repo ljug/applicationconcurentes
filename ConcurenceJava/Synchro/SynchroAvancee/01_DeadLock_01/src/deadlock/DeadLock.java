@@ -44,7 +44,7 @@ public class DeadLock {
             verrou.lock();
 
             if (DeadLock.DEBUG) {
-                System.out.printf("%nF %s : <- %s oui.. ", this.name, lanceur.name);
+                System.out.printf("%nF %s : <- %s oui.. %s", this.name, lanceur.name, verrou);
             } else {
                 System.out.format("F %s: %s"
                         + "  me lance une flèche!%n",
@@ -54,7 +54,7 @@ public class DeadLock {
             if (DeadLock.DEBUG) {
                 System.out.printf("%nF V %s : <- %s .. ", this.name, lanceur.name);
             }
-
+           
         }
 
         public void flecheRetour(Friend lanceur) {
@@ -69,8 +69,8 @@ public class DeadLock {
                         + " m'a relencé une flèche!%n",
                         this.name, lanceur.getName());
             }
-
-            verrou.unlock();
+             verrou.unlock();
+            
 
         }
     }
@@ -87,13 +87,14 @@ public class DeadLock {
             while (true) {
                 alphonse.fleche(gaston);
             }
-        }).start();
+        },"A B").start();
 
+      
         new Thread(() -> {
             while (true) {
                 gaston.fleche(alphonse);
             }
-        }).start();
+        }, "B A").start();
         /**/
     }
 

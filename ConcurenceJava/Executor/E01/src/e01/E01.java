@@ -28,6 +28,7 @@ public class E01 {
      */
     public static void testExecutorAndFutureCallable(int n) throws InterruptedException, ExecutionException {
         ExecutorService es = Executors.newFixedThreadPool(n);
+        long debut = System.currentTimeMillis();
         System.out.printf("Taille du ThreadPoo, est %d %n%n", n);
         System.out.println("Soumission du callable pour le calcul de factorielle 10");
         Future<Long> result10 = es.submit(new CalculFactorielle(10));
@@ -43,8 +44,9 @@ public class E01 {
         System.out.println("Soumission du callable pour le calcul de factorielle  20");
         Future<Long> result201 = es.submit(new CalculFactorielle(20));
         System.out.println("Appel de get d'un Future pour récupérer la valeur de factorielle 10");
+        System.out.printf("%d temps pour lancer les factorielle : %n", System.currentTimeMillis() - debut);
         Thread.sleep(1000);
-        long debut = System.currentTimeMillis();
+        debut = System.currentTimeMillis();
         long factorialof10 = result10.get();
         System.out.printf("%d factorial of 10 is : %d%n", System.currentTimeMillis() - debut,factorialof10);
         System.out.println("Appel de get d'un Future pour récupérer la valeur de factorielle 15");
