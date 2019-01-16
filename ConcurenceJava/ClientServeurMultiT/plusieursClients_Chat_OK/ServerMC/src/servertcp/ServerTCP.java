@@ -8,7 +8,6 @@ package servertcp;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.List;
 
 /**
  *
@@ -22,6 +21,7 @@ public class ServerTCP {
      */
     public static void main(String[] args) throws IOException {
         ServerSocket l = new ServerSocket(2010);
+        //Liste partagée avec tous les Thread 
         GestionListeClients listeClients = new GestionListeClients();
         System.out.println(l.getLocalSocketAddress());
         while (true) {

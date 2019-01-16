@@ -18,12 +18,12 @@ public class PlusieursBilles {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Fenetre f = new Fenetre(300,200, "title");
+        Fenetre f = new Fenetre(300,200, "title","light slate gray");
         Point p1 = new Point(150, 120);
         Point dx1 = new Point(2, 1);
         Point dx2 = new Point(1,2);
         Point dx3 = new Point(-1,-2);
-        f.remplir("light slate gray");
+        //f.remplir("light slate gray");
         
         UneBille cote1 = new UneBille(f, p1, dx1, "red");
         
