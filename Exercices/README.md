@@ -18,3 +18,45 @@ Lancer les 3 threads et observer (tester).
 * *Question 5)* Que ce passerait-il si on ajoutait un thread TD avec TD<TC et TA<TD ? développer la solution et observer
 * *Question 5)* Généraliser au cas de n threads T1,...,Ti,…Tn ou n est un argument passé au programme, En supposant que Tn ne dépend d'aucun Thread et T1 est le dernier à s’exécuter.
 
+## RDV à n processus
+Soient N processus parallèles ayant un point de rendez-vous. Un processus arrivant au point de
+rendez-vous se met en attente s'il existe au moins un autre processus qui n'y est pas arrivé. Le dernier
+arrivé réveillera les processus bloqués. La solution suivante résout ce problème en utilisant des
+sémaphores. 
+
+```java
+public class PourRDV {
+    private final Semaphore mutex;
+    private final Semaphore rdv;
+    private final int N;
+    private int nbArrive;
+    
+    public PourRDV(int n) {
+        mutex=new Semaphore(1);
+        rdv=new Semaphore(0);
+        N=n;
+        nbArrive=0;
+    }
+    
+    public void rdv() {
+        mutex.acquireUninterruptibly();
+        //Un arrivé supplémentaire
+        nbArrive++;
+        if (nbArrive < N) {
+            //Tous les processus ne sont pas encore arrivé
+            //Alors attendre
+            mutex.release();
+            rdv.acquireUninterruptibly();
+        } else {
+            //Il sont tous arrivé nbArrive == N
+            mutex.release();
+            //On libère les N-1 processus qui était en attente
+            rdv.release(N-1);
+        }
+        
+        
+    }
+}
+```
+
+
