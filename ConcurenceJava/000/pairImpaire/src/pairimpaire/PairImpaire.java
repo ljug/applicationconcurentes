@@ -12,12 +12,13 @@ package pairimpaire;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.stream.IntStream;
 
 class Paire extends Thread {
     @Override
-    public void run () {
-        for (int i=0; i< 10000; i++) {
-            if (i%2==0) {
+    public void run() {
+        for (int i = 0; i < 10000; i++) {
+            if (i % 2 == 0) {
                 System.out.printf("Thread paire %d\n", i);
             }
         }
@@ -25,10 +26,11 @@ class Paire extends Thread {
 }
 
 class Impaire implements Runnable {
+
     @Override
-    public void run () {
-        for (int i=0; i< 10000; i++) {
-            if (i%2==1) {
+    public void run() {
+        for (int i = 0; i < 10000; i++) {
+            if (i % 2 == 1) {
                 System.out.printf("Thread impaire %d\n", i);
             }
         }
@@ -36,7 +38,6 @@ class Impaire implements Runnable {
 }
 
 /**
- *
  * @author pascalfares
  */
 public class PairImpaire {
@@ -45,17 +46,42 @@ public class PairImpaire {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //Prenier precessus léger t1
         Thread t1 = new Paire();
-        Runnable r= new Impaire();
+
+        //Deuxième processus léger t2
+        Runnable r = new Impaire();
         Thread t2 = new Thread(r);
-        
+
+        //Runnable comme fonction lambda
+        Thread t3 = new Thread(
+                () -> {
+                    for (int i = 0; i < 10000; i++) {
+                        if (i % 5 == 0) {
+                            System.out.printf("Thread multiple de 5 %d\n", i);
+                        }
+                    }
+                });
+
+        Thread t4 = new Thread(
+                ()
+                -> IntStream.rangeClosed(0, 10000).forEach(
+                        (i) -> {
+                            if (i % 10 == 0) {
+                                System.out.printf("Thread multiple de 10 %d\n", i);
+                            }
+                        })
+        );
+        //Exécution du code mais pas de thread ... méthode run
         t1.run();
         r.run();
         System.out.printf("\n-----------------------\n");
         t1.start();
         t2.start();
-        
+        t3.start();
+        t4.start();
+
         t1.run();
     }
-    
+
 }
