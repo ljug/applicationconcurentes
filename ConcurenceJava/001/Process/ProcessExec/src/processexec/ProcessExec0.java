@@ -21,8 +21,8 @@ import java.io.IOException;
 public class ProcessExec0 {
 
     /**
-     * Un chemin pour vos execution et réféence de fichier, adaptez le a votre
-     * Environement
+     * Un chemin pour vos execution et référence de fichier, adaptez le a votre
+     * Environnement
      */
     public static final String CHEMIN = "/home/pascalfares/";
     /**
