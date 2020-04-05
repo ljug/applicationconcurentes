@@ -58,7 +58,8 @@ public class ProcessExec2 {
     public static void main(String[] args) {
         System.out.println("Début du programme 2");
         try {
-            String[] commande = {"cmd.exe", "/C", "Dir", CHEMIN};
+            String[] commande = {"cmd.exe", "/C", "python "+ args[0], CHEMIN};
+            System.out.println(args[0]);
             Process p = Runtime.getRuntime().exec(commande);
             BufferedReader output = getOutput(p);
             BufferedReader error = getError(p);

@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 /**
  * Notre premier exemple de création de processus fils suivi d'un recouvrement
  * Equivalent en C de : fork() -> exec()
+ *
  * @author pascalfares
  */
 public class ProcessExec1 {
@@ -25,22 +26,26 @@ public class ProcessExec1 {
      * Un chemin pour vos execution et réféence de fichier, adaptez le a votre
      * Environement
      */
-    public static final String CHEMIN = "/";
+    public static String CHEMIN = "/home/pascalfares";
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         System.out.println("Début du programme 1");
         try {
-            String[] commande = {"ls", "-l", "-R", CHEMIN};
+            if (args.length == 1) {
+                CHEMIN = args[0];
+            }
+            String[] commande = {"/bin/ls", "ls", "-l", "-R", CHEMIN};
+            System.out.println("/bin/ls -l -R "+CHEMIN);
             Process p = Runtime.getRuntime().exec(commande);
+            System.out.println("Commmande lancee");
             p.waitFor();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException ex) {
+        } catch (IOException | InterruptedException ex) {
             Logger.getLogger(ProcessExec1.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("Fin du programme 1");
     }
-    
+
 }

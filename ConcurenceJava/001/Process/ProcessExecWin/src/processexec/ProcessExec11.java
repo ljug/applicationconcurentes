@@ -32,7 +32,7 @@ public class ProcessExec11 {
     public static void main(String[] args) {
         System.out.println("Début du programme 1");
         try {
-            String[] commande = {"cmd.exe", "/C", "Dir", CHEMIN};
+            String[] commande = {"cmd.exe", "/C", args[0], CHEMIN};
             Process p = Runtime.getRuntime().exec(commande);
             p.waitFor();
         
