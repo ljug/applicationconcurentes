@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +24,7 @@ import java.util.logging.Logger;
  * Equivalent en C de : fork() -> exec()
  * @author pascalfares
  */
-public class ProcessExec2 {
+public class ProcessExec21 {
 
     /**
      * Un chemin pour vos execution et réféence de fichier, adaptez le a votre
@@ -58,7 +59,15 @@ public class ProcessExec2 {
     public static void main(String[] args) {
         System.out.println("Début du programme 2");
         try {
-            String[] commande = {"CMD.exe", "/C", "Dir", CHEMIN};
+            String[] commande = new String[args.length + 1];
+            commande[0] = "python.exe";
+            for (int i=0; i<args.length; i++) {
+                commande[i+1]=args[i];
+            }
+            for (int i=0; i< commande.length; i++) {
+                System.out.printf("%s ",commande[i]);
+            }
+            System.out.println();
             Process p = Runtime.getRuntime().exec(commande);
             BufferedReader output = getOutput(p);
             BufferedReader error = getError(p);
@@ -79,7 +88,7 @@ public class ProcessExec2 {
             
             p.waitFor();
         } catch (IOException|InterruptedException ex) {
-            Logger.getLogger(ProcessExec2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProcessExec21.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("Fin du programme 2");
     }
