@@ -11,12 +11,14 @@
 package processexec;
 
 import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * Notre premier exemple de création de processus fils suivi d'un recouvrement
  * Equivalent en C de : fork() -> exec()
+ *
  * @author pascalfares
  */
 public class ProcessExec11 {
@@ -25,21 +27,33 @@ public class ProcessExec11 {
      * Un chemin pour vos execution et réféence de fichier, adaptez le a votre
      * Environement
      */
-    public static final String CHEMIN = "c:\\Users";
+    public static String CHEMIN = "c:\\Users";
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Début du programme 1");
+        System.out.println("Début du programme 11");
         try {
+            if (args.length == 2) {
+                CHEMIN = args[1];
+            }
             String[] commande = {"cmd.exe", "/C", args[0], CHEMIN};
-            Process p = Runtime.getRuntime().exec(commande);
+            for (int i = 0; i < commande.length; i++) {
+                System.out.printf("%s ", commande[i]);
+            }
+            ProcessBuilder pb = new ProcessBuilder(commande);
+            pb.redirectOutput(Redirect.INHERIT);
+            pb.redirectInput(Redirect.INHERIT);
+            pb.redirectError(Redirect.INHERIT);
+//Runtime.getRuntime().exec(commande);
+            Process p = pb.start();
             p.waitFor();
-        
-        } catch (IOException|InterruptedException ex) {
+
+        } catch (IOException | InterruptedException ex) {
             Logger.getLogger(ProcessExec11.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Fin du programme 1");
+        System.out.println("Fin du programme 11");
     }
-    
+
 }
