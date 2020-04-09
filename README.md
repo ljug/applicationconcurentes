@@ -17,7 +17,7 @@ Dans ce github vous trouverez un ensemble d'exemples pour mettre l'accent sur le
 
 ## La librairie java.util.concurent pour les outils de synchronisation.
 
-# En complément du Cours ACCOV à l'[ISSAE Cnam Liban](http://depinfo.isae.edu.lb)
+# Ce dépot est en complément du Cours ACCOV à l'[ISSAE Cnam Liban](http://depinfo.isae.edu.lb)
 
 ## Dont les Objectifs pédagogiques sont:
 
@@ -27,13 +27,21 @@ Ce cours a pour objectif :
 - de comprendre les problèmes fondamentaux des systèmes concurrents
 - et de s'initier à des méthodes et techniques de vérification automatique de ces  systèmes (model-checking, logiques temporelles) 
 
-Dan ce dépôt vous trouverez donc des exemples concernant cette partie du Cours
+Dans ce dépôt vous trouverez donc des exemples concernant cette partie du Cours
 
 >>> Les paradigmes de la concurrence et les archétypes de programmation ('design patterns').
 >>>>Exclusion mutuelle, élection, producteur consommateur, lecteurs rédacteurs, client-serveur, "peer to peer", problèmes liés aux pannes, diffusion atomique ordonnée, inter-blocage, famine, équité, terminaison.
 Mécanismes de bases (processus, sémaphores, moniteurs, la classe "thread" et les méthodes "synchronized" dans Java, Executor, Lambda, communication synchrone et asynchrone, messages, boîtes aux lettres, invocation à distance, rendez-vous). Modularité et objets concurrents.
 
 # Travaux pratique et compléments
+
+## Les exemples du cours NFP103 ACCOV du [Cnam Liban département informatique](http://depinfo.isae.edu.lb/)
+
+[Les sources des exemples du cours ACCOV](ConcurenceJava/)
+
+## Un compléments sur l'utilisation des lambda (interface fonctionelle) pour les Runnable
+
+[Runnable et lambda](Complements/RunnableLambda/)
 
 ## Autour du client/serveur TCP/IP
 

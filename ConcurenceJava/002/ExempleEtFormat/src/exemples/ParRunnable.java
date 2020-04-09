@@ -12,7 +12,7 @@ public class ParRunnable implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < 5; i++) {
-            System.out.println("HeritageThread , en " + i);
+            System.out.println("ParRunnableThread , en " + i);
             try {
                 //Normalement ce thread sera plus long (en temps) que le thread main
                 Thread.sleep(500);

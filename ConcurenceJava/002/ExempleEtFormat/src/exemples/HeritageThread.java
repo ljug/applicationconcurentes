@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author pascalfares
+ * @author Pascal Fares
  */
 class HeritageThread extends Thread {
 
@@ -13,6 +13,7 @@ class HeritageThread extends Thread {
     public void run() {
         for (int i = 0; i < 5; i++) {
             System.out.println("HeritageThread , en " + i);
+            yield();
             try {
                 //Normalement ce thread sera plus long (en temps) que le thread main
                 Thread.sleep(500);
@@ -29,6 +30,7 @@ class HeritageThread extends Thread {
         t.start();
         for (int i = 0; i < 5; i++) {
             System.out.println("Initial main, en " + i);
+            Thread.yield();
         }
         System.out.println("Boucle main se termine");
         System.out.println("Le second thread est il vivant? " + t.isAlive());

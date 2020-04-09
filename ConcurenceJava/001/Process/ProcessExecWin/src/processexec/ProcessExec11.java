@@ -44,9 +44,9 @@ public class ProcessExec11 {
             }
             ProcessBuilder pb = new ProcessBuilder(commande);
             pb.redirectOutput(Redirect.INHERIT);
-            pb.redirectInput(Redirect.INHERIT);
+            //pb.redirectInput(Redirect.INHERIT);
             pb.redirectError(Redirect.INHERIT);
-//Runtime.getRuntime().exec(commande);
+            //Runtime.getRuntime().exec(commande);
             Process p = pb.start();
             p.waitFor();
 

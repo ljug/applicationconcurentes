@@ -41,17 +41,9 @@ public class ProcessExec2 {
     private static BufferedReader getOutput(Process p) {
         return new BufferedReader(new InputStreamReader(p.getInputStream()));
     }
-
-    /**
-     * Récuperer le standard error du processus fils
-     *
-     * @param p
-     * @return
-     */
     private static BufferedReader getError(Process p) {
         return new BufferedReader(new InputStreamReader(p.getErrorStream()));
     }
-
     private static PrintWriter getInput(Process p) {
         return new PrintWriter(new OutputStreamWriter(p.getOutputStream()));
     }

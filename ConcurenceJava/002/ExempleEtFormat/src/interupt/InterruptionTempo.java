@@ -18,13 +18,13 @@ public class InterruptionTempo implements Runnable {
     }
 
     public void tempo() {
-        try {
+        try { 
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
-            //Nous somme interompu pour retransmettre l'arrêt il faut re-armer 
-            //l'interruption
+            //Nous somme interompu pour retransmettre l'arrêt 
+            //il faut re-armer l'interruption
             System.out.println("Iterruption du sleep!!!");
-            Thread.currentThread().interrupt();
+            //Thread.currentThread().interrupt();
         }
     }
 
@@ -37,7 +37,7 @@ public class InterruptionTempo implements Runnable {
         }
         System.out.println("Fin d'exéc. du code " + id);
         // L'appel à interrupted() a réinitialisé le statut d'interruption 
-        System.out.println(Thread.currentThread().isInterrupted()); // Affiche: false 
+        System.out.println("code " + id + Thread.currentThread().isInterrupted()); // Affiche: false 
     }
 
     public static void main(String[] args) throws IOException {
