@@ -37,9 +37,12 @@ public class App {
         case "Exec21":
             ProcessExec21.main(Arrays.copyOfRange(args, 1, args.length));
             break;
+        case "Exec22":
+            ProcessExec22.main(Arrays.copyOfRange(args, 1, args.length));
+            break;
         default:
             System.out.println("Aucun des programmes connus: "
-                + "\n\t Exec0 Exec1 Exec11 Exec2 Exec21");
+                + "\n\t Exec0 Exec1 Exec11 Exec2 Exec21 Exec22");
             break;
         }
     }
