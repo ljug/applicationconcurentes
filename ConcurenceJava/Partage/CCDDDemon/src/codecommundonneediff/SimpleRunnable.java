@@ -27,6 +27,8 @@ public class SimpleRunnable implements Runnable {
                 sleep(50);
             } catch (InterruptedException ex) {
                 Logger.getLogger(SimpleRunnable.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                System.out.println("Fin su runnable simple !");
             }
         }
     }

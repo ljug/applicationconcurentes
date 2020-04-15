@@ -8,7 +8,7 @@ package cddc;
  */
 public class Data {
 
-    private int donnee;
+    private volatile int donnee;
 
     public Data() {
         setDonnee(0);
