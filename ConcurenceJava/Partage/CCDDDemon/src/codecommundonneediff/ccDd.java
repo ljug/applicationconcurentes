@@ -11,9 +11,11 @@ public class ccDd {
     public static void main(String[] args) throws InterruptedException {
 
         Runnable tache1 = new SimpleRunnable("Bonjour");
-        Runnable tache2 = new SimpleRunnable("un autre bonjour...");      
+        Runnable tache2 = new SimpleRunnable("un autre bonjour...");  
+        
         Thread t1 = new Thread(tache1, "Thread1");
         Thread t2 = new Thread(tache2, "Thread2");
+        
         t1.setDaemon(true);
         t2.setDaemon(true);
         t1.start();

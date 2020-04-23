@@ -1,5 +1,7 @@
 package cddc;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * Exemple de données muttable, 
  * sera partagé entre plusieurs Threads
@@ -8,11 +10,11 @@ package cddc;
  */
 public class Data {
 
-    private int donnee;
+    private final AtomicInteger donnee;
 
 
     public Data() {
-        setDonnee(0);
+        donnee = new AtomicInteger(0);
     }
 
     /**
@@ -22,14 +24,14 @@ public class Data {
         //1- getData : lire
         //2- +1
         //3- setData : ecrire
-        setDonnee(getDonnee() + 1);
+        donnee.incrementAndGet();
     }
 
     public int getDonnee() {
-        return donnee;
+        return donnee.get();
     }
 
     public void setDonnee(int donnee) {
-        this.donnee = donnee;
+        this.donnee.set(donnee);
     }
 }

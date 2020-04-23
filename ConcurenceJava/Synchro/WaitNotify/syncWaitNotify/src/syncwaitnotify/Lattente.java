@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class Lattente implements Runnable {
 
-    private final Message msg;
+    private Message msg;
 
     public Lattente(Message msg) {
         this.msg = msg;
@@ -24,15 +24,15 @@ public class Lattente implements Runnable {
     public void run() {
         String name = Thread.currentThread().getName();
         synchronized (msg) {
+            System.out.println(Thread.currentThread() + " : D : " + Util.currentTime());
             try {
-                System.out.println(name + " D " + Util.currentTime());
                 msg.wait();
             } catch (InterruptedException ex) {
-                Logger.getLogger(Lattente.class.getName()).log(Level.WARNING, null, ex);
+                Logger.getLogger(Lattente.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println(name + " F " + Util.currentTime());
+            System.out.println(Thread.currentThread() + " :  F : " + Util.currentTime());
             //process the message now
-            System.out.println(name + " recu: " + msg.getMessage());
+            System.out.println(Thread.currentThread() + " recu: " + msg.getMessage());
         }
 
     }

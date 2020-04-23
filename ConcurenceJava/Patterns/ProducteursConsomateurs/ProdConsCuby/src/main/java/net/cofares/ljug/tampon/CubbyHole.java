@@ -10,49 +10,56 @@
  * fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, 
  * whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the Software. »
  */
-package cubyhole;
+package net.cofares.ljug.tampon;
+
+import net.cofares.ljug.garde.Garde;
+import net.cofares.ljug.prodcons.Consomateur;
+import net.cofares.ljug.prodcons.Producteur;
 
 /**
  *
  * @author pascalfares
  */
 public class CubbyHole {
-
+    
     /**
-     * @param args the command line arguments
+     * Le contenu : pour simplifier un int!
      */
     private int contents;
-    private boolean available = false;
+    /**
+     * Donnée disponible dans le cube?
+     */
+    Garde nonPlein;
+    Garde nonVide;
+  
+    public CubbyHole() {
+        nonPlein = new Garde(true);
+        nonVide = new Garde(false);
+    }
 
-    public synchronized int get() {
-        //  guarded block. (un if ne suffit pas ... )
-        // when available => retourner contenu et dire available = false
-        while (available == false) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-            }
-        }
-        //available == true
-        available = false;
-        notifyAll();
+    
+    public int get() {
+        // when non vide => On va lire la seule donnée disponible donc 
+        //                  le tampon sera vide
+        nonVide.garde();
+        //Une élément dans le tampon, get va le retiré
+        //donc vide et nonplein
+        
+        nonVide.setGarde(false); //vide==true
+        nonPlein.setGarde(true); //plein==false
         return contents;
     }
 
-    public synchronized void put(int value) {
+    public void put(int value) {
         //  guarded block. (un if ne suffit pas ... )
         // when ! available => accpter la donnée et la stocké et available = true
         // ! available veut dire il existe de la place dans la case
-        while (available == true) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-            }
-        }
-        //availbale == false
+        // when nonPlein => déposer 
+        nonPlein.garde();
+        //on dépose donc plein et nonVide
         contents = value;
-        available = true;
-        notifyAll();
+        nonPlein.setGarde(false); //plein == true
+        nonVide.setGarde(true); //vide = false
     }
 
     /**
@@ -63,10 +70,10 @@ public class CubbyHole {
     public static void main(String[] args) {
         CubbyHole c = new CubbyHole();
         Producteur p1 = new Producteur(c, 1);
-        //Consomateur c1 = new Consomateur(c, 1);
+        Consomateur c1 = new Consomateur(c, 1);
         Consomateur c2 = new Consomateur(c, 2);
         p1.start();
-        //c1.start();
+        c1.start();
         c2.start();
     }
 }

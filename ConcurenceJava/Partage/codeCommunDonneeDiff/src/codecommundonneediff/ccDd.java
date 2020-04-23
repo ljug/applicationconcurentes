@@ -10,9 +10,11 @@ public class ccDd {
      */
     public static void main(String[] args) {
         Runnable tache1 = new SimpleRunnable("Bonjour");
-        Runnable tache2 = new SimpleRunnable("un autre bonjour...");      
+        Runnable tache2 = new SimpleRunnable("un autre bonjour..."); 
+        
         Thread t1 = new Thread(tache1, "Thread1");
-        Thread t2 = new Thread(tache2, "Thread2");       
+        Thread t2 = new Thread(tache2, "Thread2"); 
+        
         t1.start();
         t2.start();     
     }  

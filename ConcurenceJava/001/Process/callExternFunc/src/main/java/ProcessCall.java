@@ -80,7 +80,7 @@ public class ProcessCall {
                 
             }
             System.out.println("En principe res= " + res);
-                     
+            
             while ((ligne = error.readLine()) != null) {
                 System.out.println("err: " + ligne);
                 if(ligne.equals("ok"))  break;                
@@ -112,6 +112,7 @@ public class ProcessCall {
             }
             System.out.println();
             Process p = Runtime.getRuntime().exec(commande);
+
             BufferedReader output = getOutput(p);
             BufferedReader error = getError(p);
             PrintWriter input = getInput(p);
