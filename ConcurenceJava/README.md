@@ -8,6 +8,7 @@
 3. [Thread java : Ordonnancement Démon](Ordonnancement/)
 4. [Thread Java : Partage code et données](Partage/)
 5. [Application Thread : Client Serveur TCP multi Thread](ClientServeurMultiT/)
+5. [Les patterns de concurrence](Patterns/) Producteur/consommateur, lecteur/rédacteur
 6. [Besoin de synchroniser sur un exempple](/ACCOV/NecessiteSynchro/)
 7. [Les moniteurs à la Java](Synchro/)
 7. [Deadlock](Problemes/)
