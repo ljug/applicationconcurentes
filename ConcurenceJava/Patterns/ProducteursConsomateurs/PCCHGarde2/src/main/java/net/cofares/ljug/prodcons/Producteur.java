@@ -33,7 +33,7 @@ public class Producteur extends Thread {
     @SuppressWarnings("SleepWhileInLoop")
     public void run() {
         for (int i = 0; i < 10; i++) {
-            cubbyhole.ecrire("Donnee"+i);
+            cubbyhole.produire("Donnee"+i);
             System.out.println("Produteur #" + this.number
                     + " depose: " + i);
             try {

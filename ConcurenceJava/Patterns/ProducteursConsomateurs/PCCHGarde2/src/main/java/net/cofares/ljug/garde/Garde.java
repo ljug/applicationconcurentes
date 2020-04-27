@@ -14,29 +14,25 @@ import java.util.logging.Logger;
  * @author Pascal Fares <pascal.fares at cofares.net>
  */
 public class Garde {
-
+    //TODO pourrait être un prédicat 
     private boolean garde;
 
     public Garde(boolean g) {
         //On initialise la garde
         garde = g;
     }
-    /**
-     * @return the garde
-     */
     public synchronized boolean isGarde() {
         return garde;
     }
 
-    public synchronized void garde() {
+    public void garde() {
         while (!isGarde()) try {
             wait();
         } catch (InterruptedException ex) {
             Logger.getLogger(Garde.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    public synchronized void notGarde() {
+    }  
+    public void notGarde() {
         while (isGarde()) try {
             wait();
         } catch (InterruptedException ex) {

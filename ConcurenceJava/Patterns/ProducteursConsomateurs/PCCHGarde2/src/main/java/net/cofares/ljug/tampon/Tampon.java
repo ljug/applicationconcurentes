@@ -22,7 +22,7 @@ import net.cofares.ljug.prodcons.Producteur;
  * @author pascalfares
  */
 public class Tampon {
-    
+
     /**
      * Le contenu : une liste avec nombre max d'élement
      */
@@ -32,44 +32,56 @@ public class Tampon {
     /**
      * Donnée disponible dans le cube?
      */
-    Garde plein;
-    Garde vide;
-  
+    final Garde plein;
+    final Garde vide;
+
     public Tampon(int max) {
-        MAXELEM=max;
-        nbElem=0;
-        tampon=new LinkedList<>();
+        MAXELEM = max;
+        nbElem = 0;
+        tampon = new LinkedList<>();
         //2 moniteur vide et plein
         vide = new Garde(true);
         plein = new Garde(false);
     }
 
-    private String lireAction() {
+    private String consommeAction() {
         //Une élément dans le tampon, get va le retiré
+        assert nbElem > 0 : "Oups j'ai un bug nbElem ==0!";
         String contents = tampon.remove();
         nbElem--;
         //Bloquerer les lecteurs si vide
-        if (nbElem == 0) vide.setGarde(true);
+        if (nbElem == 0) {
+            vide.setGarde(true);
+        }
         //Liberer les producteur (on vient de liberer une place)
         plein.setGarde(false); //n'est plus plein
         return contents;
     }
-    public String lire() {
+
+    public String consomme() {
         // when non vide => On va consomer une donnée
-        vide.notGarde(); //when not vide
-        return lireAction(); //action de l'opération get
+        synchronized (vide) {
+            vide.notGarde(); //when not vide
+            return consommeAction(); //action de l'opération get
+        }
     }
 
-    private void ecrireAction(String value) {
+    private void produireAction(String value) {
         //on dépose donc plein et nonVide
+        assert nbElem < MAXELEM;
         tampon.add(value);
         nbElem++;
-        if (nbElem == MAXELEM) plein.setGarde(true);
+        if (nbElem == MAXELEM) {
+            plein.setGarde(true);
+        }
         vide.setGarde(false); //le tampon n'est plus vide
     }
-    public void ecrire(String value) {
-        plein.notGarde(); //when not plein
-        ecrireAction(value); //Action put
+
+    public void produire(String value) {
+        synchronized (plein) {
+            plein.notGarde(); //when not plein
+            produireAction(value); //Action put
+        }
     }
 
     /**
@@ -78,12 +90,14 @@ public class Tampon {
      * @param args
      */
     public static void main(String[] args) {
-        Tampon c = new Tampon(10);
-        Producteur p1 = new Producteur(c, 1);
+        Tampon c = new Tampon(3);
+        //Producteur p1 = new Producteur(c, 1);
         Consomateur c1 = new Consomateur(c, 1);
-        //Consomateur c2 = new Consomateur(c, 2);
-        p1.start();
+        Consomateur c2 = new Consomateur(c, 2);
+        //p1.start();
         c1.start();
-        //c2.start();
+        c2.start();
+        Producteur p1 = new Producteur(c, 1);
+        p1.start();
     }
 }

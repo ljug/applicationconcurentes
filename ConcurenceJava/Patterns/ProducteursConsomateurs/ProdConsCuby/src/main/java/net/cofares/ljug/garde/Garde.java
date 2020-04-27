@@ -26,6 +26,7 @@ public class Garde {
         return garde;
     }
 
+    //when(garde) => action
     public synchronized void garde() {
         while (!isGarde()) try {
             wait();
@@ -34,6 +35,7 @@ public class Garde {
         }
     }
     
+    //when(!garde) => action
     public synchronized void notGarde() {
         while (isGarde()) try {
             wait();
@@ -50,9 +52,9 @@ public class Garde {
         //Si oui faire notifyAll
         if (this.garde != garde) {
             this.garde = garde;
-            
+            notifyAll();       
         }
-        notifyAll();
+        
     }
 
 }

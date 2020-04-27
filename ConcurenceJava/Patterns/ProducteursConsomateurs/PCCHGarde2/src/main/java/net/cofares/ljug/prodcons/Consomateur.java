@@ -24,7 +24,7 @@ public class Consomateur extends Thread {
     private final int number;
 
     public Consomateur (Tampon c, int number) {
-        super("cons");
+        super("cons"+number);
         cubbyhole = c;
         this.number = number;
     }
@@ -33,7 +33,7 @@ public class Consomateur extends Thread {
     public void run() {
         String value;
         for (int i = 0; i < 5; i++) {
-            value = cubbyhole.lire();
+            value = cubbyhole.consomme();
             System.out.println("Consomateur #"
                     + this.number
                     + " Obtient: " + value);

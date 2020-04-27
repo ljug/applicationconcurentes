@@ -24,31 +24,27 @@ public class CubbyHole {
     private int contents;
     private boolean available = false;
 
+    //GET : CONSOMME
     public synchronized int get() {
-        //  guarded block. (un if ne suffit pas ... )
-        // when available => retourner contenu et dire available = false
-        while (available == false) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-            }
+        // tanque rien à lire attendre
+        while (available == false) try {
+            wait();
+        } catch (InterruptedException e) {
         }
-        //available == true
+        //Il existe quelque chose donc consomer
         available = false;
         notifyAll();
         return contents;
     }
-
+    
+    //PUT : PRODUIRE
     public synchronized void put(int value) {
-        //  guarded block. (un if ne suffit pas ... )
-        // when ! available => accpter la donnée et la stocké et available = true
-        // ! available veut dire il existe de la place dans la case
-        while (available == true) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-            }
+       //tanque pas de place attendre
+        while (available == true) try {
+            wait();
+        } catch (InterruptedException e) {
         }
+        //Il existe une place alors produire
         //availbale == false
         contents = value;
         available = true;

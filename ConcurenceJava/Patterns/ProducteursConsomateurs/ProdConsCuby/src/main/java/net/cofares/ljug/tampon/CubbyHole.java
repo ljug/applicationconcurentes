@@ -55,7 +55,7 @@ public class CubbyHole {
         // when ! available => accpter la donnée et la stocké et available = true
         // ! available veut dire il existe de la place dans la case
         // when nonPlein => déposer 
-        nonPlein.garde();
+        nonPlein.garde(); //attendre que nonPlein devient vraie
         //on dépose donc plein et nonVide
         contents = value;
         nonPlein.setGarde(false); //plein == true
