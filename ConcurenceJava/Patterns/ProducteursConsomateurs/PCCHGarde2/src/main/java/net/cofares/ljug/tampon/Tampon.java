@@ -65,7 +65,6 @@ public class Tampon {
             return consommeAction(); //action de l'opération get
         }
     }
-
     private void produireAction(String value) {
         //on dépose donc plein et nonVide
         assert nbElem < MAXELEM;

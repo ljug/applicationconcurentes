@@ -26,7 +26,7 @@ public class AvecLock {
     }
     public void autre() {
         i = i-1;
-         lock.unlock();
+        lock.unlock();
     }
     public int getValue(){
         return i;

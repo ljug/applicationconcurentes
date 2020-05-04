@@ -23,9 +23,11 @@ public class ExempleLock {
             }
         };
 
-        Thread t = new Thread(r);
-        t.start();
-        t.join();
+        Thread t1 = new Thread(r);
+        t1.start();
+        Thread t2 = new Thread(r);
+        t2.start();
+        t1.join();t2.join();
         System.out.printf("i=%d",al.getValue());
     }
 

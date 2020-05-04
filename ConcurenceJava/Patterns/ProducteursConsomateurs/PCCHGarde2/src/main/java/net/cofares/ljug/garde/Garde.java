@@ -25,7 +25,7 @@ public class Garde {
         return garde;
     }
 
-    public void garde() {
+    public synchronized void garde() {
         while (!isGarde()) try {
             wait();
         } catch (InterruptedException ex) {
