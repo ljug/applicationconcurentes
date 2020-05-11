@@ -24,7 +24,8 @@ public class ExreentrantLock {
                 verrou.unlock();
             }
         } else {
-            System.out.println("MethodeA : Je n'ai pas l'autorisation " + Thread.currentThread().getName()+ " Le lock " + verrou);
+            System.out.println("MethodeA : Je n'ai pas l'autorisation " + 
+                Thread.currentThread().getName()+ " Le lock " + verrou);
         }
 
     }

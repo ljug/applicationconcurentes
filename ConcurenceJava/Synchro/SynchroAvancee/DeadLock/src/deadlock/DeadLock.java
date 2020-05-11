@@ -70,6 +70,7 @@ public class DeadLock {
             }
         }).start();
         
+        
         new Thread(() -> {
             while (true) {
                 gaston.fleche(alphonse);

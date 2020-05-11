@@ -21,16 +21,18 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author pascalfares
  */
 public class DeadLock {
-
+    private final Lock verrou = new ReentrantLock();
     public static boolean DEBUG = true;
 
     static class Friend {
 
-        private final Lock verrou = new ReentrantLock();
+        private final Lock verrou;
         private final String name;
 
-        public Friend(String name) {
+
+        public Friend(String name, Lock l) {
             this.name = name;
+            verrou=l;
         }
 
         public String getName() {
@@ -79,10 +81,11 @@ public class DeadLock {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Lock verrou = new ReentrantLock();
         final Friend alphonse
-                = new Friend("A");
+                = new Friend("A", verrou);
         final Friend gaston
-                = new Friend("B");
+                = new Friend("B", verrou);
         new Thread(() -> {
             while (true) {
                 alphonse.fleche(gaston);

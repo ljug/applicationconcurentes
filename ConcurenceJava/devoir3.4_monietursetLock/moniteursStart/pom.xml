@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.cofares.ljug</groupId>
     <artifactId>moniteurs</artifactId>
-    <version>0.0</version>
+    <version>0.1</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
-    <name>moniteursBase</name>
+    <name>moniteursStart</name>
 </project>
